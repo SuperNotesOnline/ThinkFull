@@ -1,0 +1,1578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Roles — What Every Specialist Does</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+<script>if(localStorage.getItem('html-it-theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ── */
+:root {
+  --bg:      #0D0D0C;
+  --surface: #161614;
+  --s2:      #1F1F1D;
+  --s3:      #272725;
+  --border:  #2E2E2B;
+  --text:    #FFFFFF;
+  --muted:   #D8D5D0;
+  --dim:     #9A9590;
+  --accent:  #D97757;
+  --acc-h:   #E8865E;
+  --success: #8FAF6A;
+  --warn:    #D4A017;
+  --code-bg: #111110;
+  --code-text:#E8E5DF;
+  --nav-bg:  rgba(13,13,12,0.9);
+  --sans: 'Inter', system-ui, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, monospace;
+  --sidebar-w: 240px;
+}
+html[data-theme="light"] {
+  --bg:      #FAF9F5;
+  --surface: #FFFFFF;
+  --s2:      #F0EEE6;
+  --s3:      #E6E3DA;
+  --border:  #D1CFC5;
+  --text:    #141413;
+  --muted:   #4A4740;
+  --dim:     #87867F;
+  --accent:  #B85C35;
+  --acc-h:   #9E4D2A;
+  --code-bg: #1A1A18;
+  --code-text:#D4C9B8;
+  --nav-bg:  rgba(250,249,245,0.92);
+}
+
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-feature-settings:"cv01","cv02","cv09";line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* ── TOP NAV ── */
+.topnav{position:fixed;top:0;left:0;right:0;height:52px;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;z-index:200}
+.nav-left{display:flex;align-items:center;gap:12px}
+.nav-logo{width:26px;height:26px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-logo svg{color:#fff}
+.nav-title{font:700 13px/1 var(--sans);letter-spacing:-0.01em;color:var(--text)}
+.nav-sep{color:var(--border);font-size:18px;line-height:1}
+.nav-sub{font:400 13px/1 var(--sans);color:var(--dim)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-count{font:500 11px/1 var(--mono);padding:4px 10px;border-radius:100px;background:var(--s2);border:1px solid var(--border);color:var(--dim)}
+.theme-toggle{width:30px;height:30px;border-radius:6px;background:transparent;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);transition:background 130ms,color 130ms}
+.theme-toggle:hover{background:var(--s2);color:var(--text)}
+html[data-theme="light"] .icon-moon{display:none}
+html:not([data-theme="light"]) .icon-sun{display:none}
+
+/* ── LAYOUT ── */
+.layout{display:flex;padding-top:52px;min-height:100vh}
+
+/* ── SIDEBAR ── */
+.sidebar{width:var(--sidebar-w);flex-shrink:0;position:fixed;top:52px;left:0;bottom:0;overflow-y:auto;border-right:1px solid var(--border);padding:24px 0;background:var(--bg)}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.sidebar-section{margin-bottom:6px}
+.sidebar-cat{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--dim);padding:10px 20px 6px;display:block}
+.sidebar-link{display:flex;align-items:center;gap:8px;padding:6px 20px;font-size:12px;color:var(--muted);text-decoration:none;transition:color 120ms,background 120ms;border-left:2px solid transparent;margin-left:-1px}
+.sidebar-link:hover{color:var(--text);background:var(--s2)}
+.sidebar-link.active{color:var(--accent);border-left-color:var(--accent);background:rgba(217,119,87,0.06)}
+.sidebar-link .num{font:500 10px/1 var(--mono);color:var(--dim);min-width:16px}
+.sidebar-link.active .num{color:var(--accent)}
+
+/* ── MAIN ── */
+.main{margin-left:var(--sidebar-w);flex:1;padding:0 0 80px}
+
+/* ── HERO ── */
+.hero{position:relative;overflow:hidden;padding:88px 48px 72px;border-bottom:1px solid var(--border);min-height:540px;display:flex;align-items:center;justify-content:center;text-align:center}
+
+/* Pulsing glow */
+.hero-glow{position:absolute;top:-160px;left:35%;width:640px;height:640px;background:radial-gradient(ellipse,rgba(217,119,87,0.14) 0%,transparent 65%);pointer-events:none;animation:glow-pulse 5s ease-in-out infinite}
+@keyframes glow-pulse{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.1)}}
+
+/* Marquee background */
+.hero-marquee-wrap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-evenly;pointer-events:none;overflow:hidden;opacity:.08;-webkit-mask-image:linear-gradient(to right,transparent 0%,black 12%,black 88%,transparent 100%);mask-image:linear-gradient(to right,transparent 0%,black 12%,black 88%,transparent 100%)}
+.marquee-row{overflow:hidden;display:flex}
+.marquee-track{display:flex;gap:10px;flex-shrink:0;white-space:nowrap;animation:marquee 32s linear infinite}
+.marquee-track.marquee-rev{animation:marquee-rev 40s linear infinite}
+.mpill{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:.08em;padding:6px 14px;border-radius:100px;border:1px solid var(--accent);color:var(--accent);flex-shrink:0}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes marquee-rev{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+
+/* Hero content */
+.hero-content{position:relative;z-index:2;max-width:800px}
+
+/* Eyebrow */
+.hero-eyebrow{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:24px;animation:fade-up .5s ease both .05s}
+.ey-line{display:inline-block;height:1.5px;background:var(--accent);animation:line-draw .5s ease both .05s}
+.ey-text{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:.12em;color:var(--accent)}
+@keyframes line-draw{from{width:0;opacity:0}to{width:20px;opacity:1}}
+
+/* H1 word-stagger */
+#hero-h1{font:800 clamp(38px,5.5vw,70px)/1.04 var(--sans);letter-spacing:-.038em;margin-bottom:40px}
+#hero-h1 .word{display:inline-block;opacity:0;transform:translateY(26px);animation:word-up .55s cubic-bezier(.22,1,.36,1) both}
+#hero-h1 em{font-style:italic;color:var(--accent)}
+@keyframes word-up{to{opacity:1;transform:none}}
+@keyframes fade-up{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* Stats */
+.hero-stats{display:flex;gap:2px;margin-bottom:36px;animation:fade-up .5s ease both .7s;justify-content:center}
+.hstat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 22px;min-width:120px}
+.hstat:first-child{border-radius:8px 0 0 8px}
+.hstat:last-child{border-radius:0 8px 8px 0}
+.hstat:not(:first-child):not(:last-child){border-radius:0}
+.hstat-val{display:block;font:800 30px/1 var(--sans);letter-spacing:-.03em;color:var(--accent);margin-bottom:5px;transition:transform 200ms ease}
+@keyframes stat-pulse{0%{transform:scale(1)}40%{transform:scale(1.18)}70%{transform:scale(0.96)}100%{transform:scale(1)}}
+.hstat-label{font:500 10px/1 var(--mono);text-transform:uppercase;letter-spacing:.08em;color:var(--dim)}
+
+/* Hero desc */
+.hero-desc{font-size:15px;color:var(--text);max-width:520px;line-height:1.65;margin-bottom:28px;animation:fade-up .5s ease both .8s;margin-left:auto;margin-right:auto}
+
+/* Scenario box */
+.scenario-box{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px 20px;max-width:620px;animation:fade-up .5s ease both .92s;margin-left:auto;margin-right:auto;text-align:left}
+.scenario-label{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--accent);margin-bottom:8px}
+.scenario-box p{font-size:13px;color:var(--muted);line-height:1.6}
+.scenario-box strong{color:var(--text)}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  .hero-glow,.marquee-track,.marquee-track.marquee-rev{animation:none}
+  #hero-h1 .word,.hero-eyebrow,.hero-stats,.hero-desc,.scenario-box{opacity:1;transform:none;animation:none}
+}
+
+/* ── CATEGORY SECTION ── */
+.cat-section{padding:0}
+.cat-header{padding:32px 48px 20px;border-bottom:1px solid var(--border);position:sticky;top:52px;background:var(--bg);z-index:10}
+.cat-label{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.cat-label::before{content:'';display:inline-block;width:16px;height:1.5px;background:var(--accent)}
+.cat-header h2{font:700 22px/1.1 var(--sans);letter-spacing:-0.02em;color:var(--text)}
+
+/* ── ROLE CARD ── */
+.role-card{border-bottom:1px solid var(--border);padding:40px 48px}
+.role-card:last-child{border-bottom:none}
+.role-header{display:flex;align-items:flex-start;gap:16px;margin-bottom:20px}
+.role-number{font:700 11px/1 var(--mono);color:var(--dim);background:var(--s2);border:1px solid var(--border);border-radius:6px;padding:6px 10px;flex-shrink:0;margin-top:2px}
+.role-title-group{}
+.role-tag{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);background:rgba(217,119,87,0.1);border:1px solid rgba(217,119,87,0.2);padding:3px 8px;border-radius:100px;display:inline-block;margin-bottom:8px}
+.role-title{font:700 20px/1.15 var(--sans);letter-spacing:-0.02em;color:var(--text)}
+.role-desc{font-size:14px;color:var(--text);line-height:1.7;max-width:680px;margin-bottom:24px}
+
+/* Role body columns */
+.role-body{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
+@media(max-width:900px){.role-body{grid-template-columns:1fr}}
+
+.role-col h4{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:0.08em;color:var(--dim);margin-bottom:12px}
+.asks-list{list-style:none;padding:0}
+.asks-list li{font-size:13px;color:var(--text);padding:5px 0 5px 16px;position:relative;line-height:1.5;border-bottom:1px solid var(--border)}
+.asks-list li:last-child{border-bottom:none}
+.asks-list li::before{content:'?';position:absolute;left:0;color:var(--accent);font:700 10px/1 var(--mono);top:7px}
+
+.delivers-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+.del-tag{font:500 11px/1 var(--mono);padding:5px 10px;border-radius:6px;background:var(--s2);border:1px solid var(--border);color:var(--text)}
+
+/* Example block */
+.example-block{background:var(--code-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-top:4px}
+.example-header{display:flex;align-items:center;gap:10px;padding:10px 16px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02)}
+.example-dot{width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:0.8}
+.example-label{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--dim)}
+.example-body{padding:16px 18px}
+.example-body p,.example-body li{font:400 13px/1.7 var(--mono);color:var(--code-text)}
+.example-body ul{padding-left:0;list-style:none}
+.example-body ul li{padding:2px 0 2px 16px;position:relative}
+.example-body ul li::before{content:'→';position:absolute;left:0;color:var(--accent);font-size:11px;top:4px}
+.example-body .hl{color:var(--accent);font-weight:500}
+.example-body .good{color:var(--success)}
+.example-body .bad{color:var(--error);text-decoration:line-through;opacity:0.7}
+.example-body .label{color:var(--dim);font-size:11px;margin-bottom:3px;display:block}
+.example-sep{height:1px;background:var(--border);margin:12px 0}
+
+/* ── BACK TO TOP ── */
+#backToTop{position:fixed;bottom:24px;right:24px;width:38px;height:38px;border-radius:8px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);opacity:0;transform:translateY(6px);transition:opacity 180ms,transform 180ms,background 130ms,color 130ms;z-index:99}
+#backToTop.show{opacity:1;transform:none}
+#backToTop:hover{background:var(--s2);color:var(--text)}
+
+/* ── FADE ── */
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 160ms ease,transform 160ms ease}
+.fade-in.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.fade-in{opacity:1;transform:none;transition:none}}
+
+/* ── SCROLL OFFSET — account for fixed nav (52px) + sticky cat-header (~108px) ── */
+.role-card{scroll-margin-top:168px}
+.cat-section{scroll-margin-top:52px}
+
+/* ── MOBILE ── */
+@media(max-width:768px){
+  .sidebar{display:none}
+  .main{margin-left:0}
+  .hero,.role-card,.cat-header{padding-left:20px;padding-right:20px}
+  .cat-header{top:52px}
+  .nav-sub,.nav-count{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="nav-left">
+    <div class="nav-logo">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+    </div>
+    <span class="nav-title">Ultimate Agent</span>
+    <span class="nav-sep">·</span>
+    <span class="nav-sub">Role Reference</span>
+  </div>
+  <div class="nav-right">
+    <a href="ultimate-agent.html" class="nav-count" style="text-decoration:none;cursor:pointer;transition:color 130ms,border-color 130ms" onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'" onmouseout="this.style.color='';this.style.borderColor=''">← Framework</a>
+    <span class="nav-count">22 Roles</span>
+    <a href="studio-launchpad.html" class="nav-count" style="text-decoration:none;cursor:pointer;background:var(--accent);color:#fff;border-color:var(--accent);transition:opacity 130ms" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">Prompt Studio ⚡</a>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+      <svg class="icon-sun" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-section">
+    <span class="sidebar-cat">Vision & Strategy</span>
+    <a href="#founder" class="sidebar-link"><span class="num">01</span>Founder</a>
+    <a href="#product-strategist" class="sidebar-link"><span class="num">02</span>Product Strategist</a>
+    <a href="#business-consultant" class="sidebar-link"><span class="num">03</span>Business Consultant</a>
+    <a href="#product-manager" class="sidebar-link"><span class="num">04</span>Product Manager</a>
+  </div>
+  <div class="sidebar-section">
+    <span class="sidebar-cat">Research & Discovery</span>
+    <a href="#research-analyst" class="sidebar-link"><span class="num">05</span>Research Analyst</a>
+    <a href="#ux-researcher" class="sidebar-link"><span class="num">06</span>UX Researcher</a>
+  </div>
+  <div class="sidebar-section">
+    <span class="sidebar-cat">Design</span>
+    <a href="#ux-designer" class="sidebar-link"><span class="num">07</span>UX Designer</a>
+    <a href="#ui-designer" class="sidebar-link"><span class="num">08</span>UI Designer</a>
+    <a href="#experience-engineer" class="sidebar-link"><span class="num">09</span>Experience Engineer</a>
+    <a href="#creative-director" class="sidebar-link"><span class="num">10</span>Creative Director</a>
+    <a href="#brand-strategist" class="sidebar-link"><span class="num">11</span>Brand Strategist</a>
+  </div>
+  <div class="sidebar-section">
+    <span class="sidebar-cat">Craft</span>
+    <a href="#copy-strategist" class="sidebar-link"><span class="num">12</span>Copy Strategist</a>
+    <a href="#motion-designer" class="sidebar-link"><span class="num">13</span>Motion Designer</a>
+    <a href="#frontend-engineer" class="sidebar-link"><span class="num">14</span>Front-End Engineer</a>
+  </div>
+  <div class="sidebar-section">
+    <span class="sidebar-cat">Technology</span>
+    <a href="#architect" class="sidebar-link"><span class="num">15</span>Software Architect</a>
+    <a href="#data-analytics" class="sidebar-link"><span class="num">16</span>Data & Analytics</a>
+    <a href="#ai-systems" class="sidebar-link"><span class="num">17</span>AI Systems Designer</a>
+  </div>
+  <div class="sidebar-section">
+    <span class="sidebar-cat">Growth</span>
+    <a href="#growth-consultant" class="sidebar-link"><span class="num">18</span>Growth Consultant</a>
+    <a href="#conversion-architect" class="sidebar-link"><span class="num">19</span>Conversion Architect</a>
+    <a href="#community-designer" class="sidebar-link"><span class="num">20</span>Community Designer</a>
+  </div>
+  <div class="sidebar-section">
+    <span class="sidebar-cat">Innovation & QA</span>
+    <a href="#innovation-director" class="sidebar-link"><span class="num">21</span>Innovation Director</a>
+    <a href="#qa-lead" class="sidebar-link"><span class="num">22</span>QA Lead</a>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main">
+
+<!-- HERO -->
+<div class="hero">
+  <!-- Glow -->
+  <div class="hero-glow"></div>
+
+  <!-- Scrolling role names (background) -->
+  <div class="hero-marquee-wrap" aria-hidden="true">
+    <div class="marquee-row">
+      <div class="marquee-track">
+        <span class="mpill">Founder</span><span class="mpill">Product Strategist</span><span class="mpill">Business Consultant</span><span class="mpill">Research Analyst</span><span class="mpill">UX Researcher</span><span class="mpill">UX Designer</span><span class="mpill">UI Designer</span><span class="mpill">Experience Engineer</span><span class="mpill">Motion Designer</span><span class="mpill">Creative Director</span><span class="mpill">Brand Strategist</span>
+        <span class="mpill">Founder</span><span class="mpill">Product Strategist</span><span class="mpill">Business Consultant</span><span class="mpill">Research Analyst</span><span class="mpill">UX Researcher</span><span class="mpill">UX Designer</span><span class="mpill">UI Designer</span><span class="mpill">Experience Engineer</span><span class="mpill">Motion Designer</span><span class="mpill">Creative Director</span><span class="mpill">Brand Strategist</span>
+      </div>
+    </div>
+    <div class="marquee-row">
+      <div class="marquee-track marquee-rev">
+        <span class="mpill">Copy Strategist</span><span class="mpill">Front-End Engineer</span><span class="mpill">Software Architect</span><span class="mpill">Data &amp; Analytics</span><span class="mpill">AI Systems Designer</span><span class="mpill">Growth Consultant</span><span class="mpill">Conversion Architect</span><span class="mpill">Community Designer</span><span class="mpill">Innovation Director</span><span class="mpill">Product Manager</span><span class="mpill">QA Lead</span>
+        <span class="mpill">Copy Strategist</span><span class="mpill">Front-End Engineer</span><span class="mpill">Software Architect</span><span class="mpill">Data &amp; Analytics</span><span class="mpill">AI Systems Designer</span><span class="mpill">Growth Consultant</span><span class="mpill">Conversion Architect</span><span class="mpill">Community Designer</span><span class="mpill">Innovation Director</span><span class="mpill">Product Manager</span><span class="mpill">QA Lead</span>
+      </div>
+    </div>
+    <div class="marquee-row">
+      <div class="marquee-track">
+        <span class="mpill">Strategy</span><span class="mpill">UX / UI</span><span class="mpill">Motion Design</span><span class="mpill">Brand</span><span class="mpill">AI Systems</span><span class="mpill">Architecture</span><span class="mpill">Growth</span><span class="mpill">Conversion</span><span class="mpill">Innovation</span><span class="mpill">Community</span><span class="mpill">Analytics</span><span class="mpill">Copy</span>
+        <span class="mpill">Strategy</span><span class="mpill">UX / UI</span><span class="mpill">Motion Design</span><span class="mpill">Brand</span><span class="mpill">AI Systems</span><span class="mpill">Architecture</span><span class="mpill">Growth</span><span class="mpill">Conversion</span><span class="mpill">Innovation</span><span class="mpill">Community</span><span class="mpill">Analytics</span><span class="mpill">Copy</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Foreground content -->
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="ey-line"></span>
+      <span class="ey-text">Ultimate Agent — Role Reference</span>
+    </div>
+    <h1 id="hero-h1">What every <em>specialist</em> actually does</h1>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-val" data-target="22">0</span><span class="hstat-label">Specialist Roles</span></div>
+      <div class="hstat"><span class="hstat-val" data-target="7">0</span><span class="hstat-label">Disciplines</span></div>
+      <div class="hstat"><span class="hstat-val" data-target="18">0</span><span class="hstat-label">Deliverable Sections</span></div>
+    </div>
+    <p class="hero-desc">Each role brings a completely different lens to the same product challenge. One framework, 22 ways of thinking.</p>
+    <div class="scenario-box">
+      <div class="scenario-label">Shared Example Scenario</div>
+      <p>All examples are drawn from the same challenge: <strong>You're building a SaaS platform for remote creative teams — project management, asset versioning, and async design review in one place.</strong> See how each specialist approaches it differently.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- VISION & STRATEGY -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="cat-section" id="vision">
+  <div class="cat-header">
+    <div class="cat-label">Category 01</div>
+    <h2>Vision &amp; Strategy</h2>
+  </div>
+
+  <!-- 01 FOUNDER -->
+  <div class="role-card fade-in" id="founder">
+    <div class="role-header">
+      <div class="role-number">01</div>
+      <div class="role-title-group">
+        <div class="role-tag">Vision</div>
+        <div class="role-title">Founder</div>
+      </div>
+    </div>
+    <p class="role-desc">Holds the long view. The Founder role keeps every decision anchored to a founding thesis — the core insight about why this product deserves to exist and who it ultimately serves. Thinks in years, not sprints. Asks "why are we building this?" when the team gets lost in features.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What problem are we <em>really</em> solving — the surface problem or the deeper one?</li>
+          <li>Who is the primary user and what does their life look like without this product?</li>
+          <li>What does winning look like in 5 years?</li>
+          <li>What do we refuse to build, and why?</li>
+          <li>What's our founding insight that competitors are missing?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Vision statement</span>
+          <span class="del-tag">Mission</span>
+          <span class="del-tag">Positioning thesis</span>
+          <span class="del-tag">Founding narrative</span>
+          <span class="del-tag">What we won't build</span>
+        </div>
+        <br>
+        <h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Founder thinking — positioning the product</span></div>
+      <div class="example-body">
+        <p><span class="hl">"The real insight here isn't project management — it's creative momentum."</span></p>
+        <p style="margin-top:8px">Teams don't lose projects. They lose flow. Every tool in this space is optimized for managers who want visibility, not for designers who need focus.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Founding position:</span></p>
+        <ul>
+          <li>We're not competing with Asana or Linear — we're replacing the pile of Notion docs, Slack threads, and Figma comments that designers use INSTEAD of those tools.</li>
+          <li>Tag line territory: <span class="hl">"The first PM tool that protects creative work from process overhead."</span></li>
+          <li>What we refuse to build: Gantt charts, time tracking, billing. If it's for the PM, not the designer, it's out of scope for v1.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 PRODUCT STRATEGIST -->
+  <div class="role-card fade-in" id="product-strategist">
+    <div class="role-header">
+      <div class="role-number">02</div>
+      <div class="role-title-group">
+        <div class="role-tag">Strategy</div>
+        <div class="role-title">Product Strategist</div>
+      </div>
+    </div>
+    <p class="role-desc">Maps product bets to business outcomes across phases. The Product Strategist decides what to build first, what creates lock-in, and which metric matters most right now. Thinks in sequences — what must be true before the next thing can work.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What's the wedge feature that gets teams in the door?</li>
+          <li>What creates switching cost once users are in?</li>
+          <li>Which metric matters most at this stage?</li>
+          <li>What must be true before we build feature X?</li>
+          <li>What's the fastest path to product-market fit?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Product strategy</span>
+          <span class="del-tag">Phase roadmap</span>
+          <span class="del-tag">Feature sequencing</span>
+          <span class="del-tag">Bets framework</span>
+          <span class="del-tag">North star metric</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Product Strategist — phase sequencing</span></div>
+      <div class="example-body">
+        <p><span class="label">Phase 1 wedge (months 0–4):</span></p>
+        <p><span class="hl">Asset versioning.</span> Designers live in file hell — 47 versions of logo_final_FINAL_v3.ai. If we solve that one thing better than Dropbox + Figma combined, teams bring their entire workflow to us.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Phase 2 lock-in (months 4–9):</span></p>
+        <p>Async design review. Once teams are reviewing assets inside the product, they stop using Loom + Slack for feedback. Communication history is now in our system.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Strategic constraint:</span></p>
+        <p>Don't build roadmap/timeline features until 50 teams trust you with their files. <span class="hl">Trust comes before features.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 BUSINESS CONSULTANT -->
+  <div class="role-card fade-in" id="business-consultant">
+    <div class="role-header">
+      <div class="role-number">03</div>
+      <div class="role-title-group">
+        <div class="role-tag">Business</div>
+        <div class="role-title">Business Consultant</div>
+      </div>
+    </div>
+    <p class="role-desc">Evaluates business model viability, unit economics, and competitive moat. The Business Consultant connects product decisions to revenue, cost, and defensibility — and flags when a great product idea is a bad business.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What's the pricing model and why?</li>
+          <li>Who is the economic buyer vs. the user?</li>
+          <li>What's our CAC payback period?</li>
+          <li>What creates the moat — data, network, switching cost?</li>
+          <li>What does the unit economics look like at 1,000 customers?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Business model analysis</span>
+          <span class="del-tag">Pricing strategy</span>
+          <span class="del-tag">GTM plan</span>
+          <span class="del-tag">Moat analysis</span>
+          <span class="del-tag">Unit economics</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Business Consultant — pricing model analysis</span></div>
+      <div class="example-body">
+        <p><span class="label">Problem with per-seat pricing at SMB:</span></p>
+        <p>A 3-person design team sees "$29 × 3 = $87/mo" and walks. Flat seat pricing kills SMB adoption.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Recommendation:</span></p>
+        <ul>
+          <li><span class="hl">Seat floor:</span> 3 seats minimum ($49/mo). Eliminates solo-user tire-kickers and sets revenue floor.</li>
+          <li><span class="hl">Storage overages:</span> First 50GB free, then $0.08/GB. This is where design teams actually spend money.</li>
+          <li><span class="hl">Buyer mapping:</span> The design lead is your champion. IT/finance is your blocker. Build SSO and audit logs early — they're trust features for the blocker, not the user.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 PRODUCT MANAGER -->
+  <div class="role-card fade-in" id="product-manager">
+    <div class="role-header">
+      <div class="role-number">04</div>
+      <div class="role-title-group">
+        <div class="role-tag">Execution</div>
+        <div class="role-title">Product Manager</div>
+      </div>
+    </div>
+    <p class="role-desc">Keeps the ship pointed at the right destination. The PM translates strategy into prioritized, executable work — breaking ambitions into sprints, surfacing blockers, and maintaining focus when everything feels equally urgent.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What's the one thing we absolutely must ship this sprint?</li>
+          <li>What dependency is blocking us?</li>
+          <li>What does success look like for this quarter?</li>
+          <li>What is NOT in scope and why?</li>
+          <li>Who owns this and by when?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Roadmap</span>
+          <span class="del-tag">Sprint priorities</span>
+          <span class="del-tag">OKRs</span>
+          <span class="del-tag">Dependency map</span>
+          <span class="del-tag">Scope decisions</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Product Manager — Q3 prioritization</span></div>
+      <div class="example-body">
+        <p><span class="label">Q3 objective:</span></p>
+        <p>Activation rate: <span class="hl">23% → 40%</span>. Current data shows 60% of new signups never upload a single file. That's the only problem we're solving this quarter.</p>
+        <div class="example-sep"></div>
+        <ul>
+          <li><span class="hl">Sprint 1:</span> Redesign empty state. Add "import from Figma" CTA, file drag-zone, sample project. Measure: % who upload within 24h of signup.</li>
+          <li><span class="hl">Sprint 2:</span> Figma import integration. One-click bring your existing projects in.</li>
+          <li><span class="hl">Sprint 3:</span> Team invite flow redesign. Current flow: 7 steps. Target: 2 steps.</li>
+          <li>Measure each independently. Don't ship all 3 at once — we won't know what worked.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div><!-- /vision -->
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- RESEARCH & DISCOVERY -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="cat-section" id="research">
+  <div class="cat-header">
+    <div class="cat-label">Category 02</div>
+    <h2>Research &amp; Discovery</h2>
+  </div>
+
+  <!-- 05 RESEARCH ANALYST -->
+  <div class="role-card fade-in" id="research-analyst">
+    <div class="role-header">
+      <div class="role-number">05</div>
+      <div class="role-title-group">
+        <div class="role-tag">Research</div>
+        <div class="role-title">Research Analyst</div>
+      </div>
+    </div>
+    <p class="role-desc">Synthesizes market data, competitive landscape, and trend signals into strategic intelligence. The Research Analyst finds what's true about the world outside the product — market size, competitor weaknesses, user sentiment, and emerging shifts.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>How big is the addressable market, really?</li>
+          <li>Who are the top 5 competitors and what do their users hate about them?</li>
+          <li>What are users saying in reviews, forums, and communities?</li>
+          <li>What trend is about to change this market?</li>
+          <li>What gap does no one currently fill?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Market analysis</span>
+          <span class="del-tag">Competitor teardowns</span>
+          <span class="del-tag">User sentiment synthesis</span>
+          <span class="del-tag">TAM/SAM/SOM</span>
+          <span class="del-tag">Trend report</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Research Analyst — competitor sentiment synthesis</span></div>
+      <div class="example-body">
+        <p><span class="label">Top complaints from Figma + Asana users (Reddit, G2, Capterra analysis):</span></p>
+        <ul>
+          <li>Figma users: <span class="hl">"File versioning is chaos"</span> — no diff view, no rollback without premium</li>
+          <li>Asana users: <span class="hl">"Not built for creative work"</span> — tasks describe deliverables, not creative decisions</li>
+          <li>Monday users: <span class="hl">"Everything needs a custom field"</span> — too generic, no design-native concepts</li>
+        </ul>
+        <div class="example-sep"></div>
+        <p><span class="hl">The gap:</span> None of the top 5 tools combine asset versioning + async visual review + creative-native project structure. That's the market entry point.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 UX RESEARCHER -->
+  <div class="role-card fade-in" id="ux-researcher">
+    <div class="role-header">
+      <div class="role-number">06</div>
+      <div class="role-title-group">
+        <div class="role-tag">Research</div>
+        <div class="role-title">UX Researcher</div>
+      </div>
+    </div>
+    <p class="role-desc">Uncovers what users actually need versus what they say they need. The UX Researcher watches behavior, not just feedback — finding the workarounds, frustrations, and surprising use cases that reveal the real product to build.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>Where do users get stuck and what do they do about it?</li>
+          <li>What workarounds have they invented?</li>
+          <li>What's the trigger that makes someone switch tools?</li>
+          <li>What does success look like from the user's perspective?</li>
+          <li>What do users say they want vs. what they actually do?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">User interviews</span>
+          <span class="del-tag">Journey maps</span>
+          <span class="del-tag">Jobs-to-be-done</span>
+          <span class="del-tag">Friction analysis</span>
+          <span class="del-tag">Persona synthesis</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">UX Researcher — interview finding, 10 design leads</span></div>
+      <div class="example-body">
+        <p><span class="label">Unexpected finding:</span></p>
+        <p>7 of 10 design leads maintain a shared Notion doc alongside their PM tool. When asked why: <span class="hl">"We need to capture the why behind design decisions, and Jira doesn't have a place for that."</span></p>
+        <div class="example-sep"></div>
+        <p><span class="label">Implication:</span></p>
+        <p>The workaround IS the product. They're not looking for better task management — they need a <span class="hl">design decision layer</span>: context, rationale, references, and history attached to creative work. No competitor offers this natively.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Job-to-be-done:</span> "When I hand off work, I want the next person to understand not just what we built, but why we built it this way."</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- DESIGN -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="cat-section" id="design">
+  <div class="cat-header">
+    <div class="cat-label">Category 03</div>
+    <h2>Design</h2>
+  </div>
+
+  <!-- 07 UX DESIGNER -->
+  <div class="role-card fade-in" id="ux-designer">
+    <div class="role-header">
+      <div class="role-number">07</div>
+      <div class="role-title-group">
+        <div class="role-tag">UX</div>
+        <div class="role-title">UX Designer</div>
+      </div>
+    </div>
+    <p class="role-desc">Creates clear, efficient, accessible experiences. The UX Designer reduces friction, eliminates unnecessary steps, and ensures users can accomplish their goals without confusion — on any device.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What's the minimum number of steps to the user's goal?</li>
+          <li>Where can we eliminate a decision point?</li>
+          <li>What does the user expect to happen here?</li>
+          <li>Is this accessible on mobile?</li>
+          <li>Where does the user's mental model break?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">User flows</span>
+          <span class="del-tag">Wireframes</span>
+          <span class="del-tag">IA maps</span>
+          <span class="del-tag">Accessibility audit</span>
+          <span class="del-tag">Usability testing</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">UX Designer — onboarding flow audit</span></div>
+      <div class="example-body">
+        <p><span class="label">Current state: 7 steps before a user sees their first project</span></p>
+        <ul>
+          <li><span class="bad">Step 1: Account creation</span></li>
+          <li><span class="bad">Step 2: Email verification</span></li>
+          <li><span class="bad">Step 3: Team name</span></li>
+          <li><span class="bad">Step 4: Industry selection</span></li>
+          <li><span class="bad">Step 5: Team size</span></li>
+          <li><span class="bad">Step 6: Invite teammates</span></li>
+          <li><span class="bad">Step 7: Tour modal</span></li>
+        </ul>
+        <div class="example-sep"></div>
+        <p><span class="label">Proposed: 3 steps to first value</span></p>
+        <ul>
+          <li><span class="good">Step 1:</span> Name your workspace (30 seconds)</li>
+          <li><span class="good">Step 2:</span> Upload a file or connect Figma (first value moment)</li>
+          <li><span class="good">Step 3:</span> Invite your team (optional, skippable)</li>
+        </ul>
+        <p style="margin-top:8px">Industry, team size, tour — all deferred to settings. Progressive disclosure.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 UI DESIGNER -->
+  <div class="role-card fade-in" id="ui-designer">
+    <div class="role-header">
+      <div class="role-number">08</div>
+      <div class="role-title-group">
+        <div class="role-tag">UI</div>
+        <div class="role-title">UI Designer</div>
+      </div>
+    </div>
+    <p class="role-desc">Crafts the visual language of the product. The UI Designer makes every screen feel intentional — hierarchy, weight, spacing, and color working together so the eye lands in the right place without effort.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>Does hierarchy guide the eye to what matters most?</li>
+          <li>Is the design system consistent across all screens?</li>
+          <li>What's competing for visual attention that shouldn't be?</li>
+          <li>Does this feel premium or generic?</li>
+          <li>Are we using white space as a design tool?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">UI designs</span>
+          <span class="del-tag">Design system</span>
+          <span class="del-tag">Component library</span>
+          <span class="del-tag">Visual specs</span>
+          <span class="del-tag">Typography system</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">UI Designer — visual hierarchy audit on dashboard</span></div>
+      <div class="example-body">
+        <p><span class="label">Problem identified:</span></p>
+        <p>The dashboard has <span class="hl">8 competing visual weights</span> — everything looks equally important, so nothing stands out.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Proposed 3-level hierarchy:</span></p>
+        <ul>
+          <li><span class="hl">Level 1 — Primary action:</span> "New project" button gets accent color (#D97757). One per screen.</li>
+          <li><span class="hl">Level 2 — Secondary actions:</span> All other actions get outlined buttons. Surface-colored, border only.</li>
+          <li><span class="hl">Level 3 — Tertiary:</span> Filters, sort, settings — text-only, no container.</li>
+        </ul>
+        <p style="margin-top:8px">Three levels, no exceptions. The eye learns the system in one session.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 EXPERIENCE ENGINEER -->
+  <div class="role-card fade-in" id="experience-engineer">
+    <div class="role-header">
+      <div class="role-number">09</div>
+      <div class="role-title-group">
+        <div class="role-tag">Experience</div>
+        <div class="role-title">Experience Engineer</div>
+      </div>
+    </div>
+    <p class="role-desc">Finds moments where the product creates emotional connection. The Experience Engineer asks what users will remember, share, and tell colleagues about — then designs those moments deliberately.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What will users screenshot?</li>
+          <li>What moment will they describe to a colleague?</li>
+          <li>What's the first impression when they log in?</li>
+          <li>What does the empty state communicate?</li>
+          <li>How do we celebrate a team win?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Delight audit</span>
+          <span class="del-tag">Micro-interaction specs</span>
+          <span class="del-tag">Moment mapping</span>
+          <span class="del-tag">Empty state designs</span>
+          <span class="del-tag">Celebration design</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Experience Engineer — milestone moment design</span></div>
+      <div class="example-body">
+        <p><span class="label">Opportunity: project completion moment</span></p>
+        <p>Currently: a checkbox turns gray. No acknowledgment that a team shipped something real.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Proposed experience:</span></p>
+        <p>When all tasks in a project are marked complete, show a quiet in-app moment — not a confetti explosion. A single line:</p>
+        <p style="margin-top:8px"><span class="hl">"✦ Brand Refresh shipped · Sarah, Marcus, Ji-won"</span></p>
+        <p style="margin-top:8px">Each team member's name appears. No animation. No modal. Just a 4-second card that fades in, then out.</p>
+        <div class="example-sep"></div>
+        <p>Small. Personal. Memorable. <span class="hl">This is the moment teams screenshot.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 CREATIVE DIRECTOR -->
+  <div class="role-card fade-in" id="creative-director">
+    <div class="role-header">
+      <div class="role-number">10</div>
+      <div class="role-title-group">
+        <div class="role-tag">Creative</div>
+        <div class="role-title">Creative Director</div>
+      </div>
+    </div>
+    <p class="role-desc">Ensures brand consistency and strategic visual direction. The Creative Director maintains a strong point of view about what the product looks, sounds, and feels like — and pushes back when execution drifts from that vision.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>If the product had a personality, what would it be?</li>
+          <li>What makes this look different from every competitor?</li>
+          <li>Is every screen recognizably the same product?</li>
+          <li>What reference points set the aesthetic north star?</li>
+          <li>Does the visual language support or undermine the brand?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Creative direction</span>
+          <span class="del-tag">Mood boards</span>
+          <span class="del-tag">Brand principles</span>
+          <span class="del-tag">Visual language guide</span>
+          <span class="del-tag">Reference set</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Creative Director — visual direction brief</span></div>
+      <div class="example-body">
+        <p><span class="label">Current aesthetic diagnosis:</span></p>
+        <p>The product currently reads as <span class="hl">"productivity gray"</span> — same as Notion, Linear, Height. Functional but undifferentiated.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Direction: "Creative Studio"</span></p>
+        <ul>
+          <li>Warmer palette — cream backgrounds, clay accents, ink typography</li>
+          <li>Editorial type treatment — headlines feel designed, not defaulted</li>
+          <li>White space that breathes like a gallery, not a spreadsheet</li>
+          <li>Photography/illustration style: work in progress, not polished mockups</li>
+        </ul>
+        <p style="margin-top:8px"><span class="label">Reference:</span> Are.na editorial sensibility + Linear interaction polish + Framer's spatial confidence.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 BRAND STRATEGIST -->
+  <div class="role-card fade-in" id="brand-strategist">
+    <div class="role-header">
+      <div class="role-number">11</div>
+      <div class="role-title-group">
+        <div class="role-tag">Brand</div>
+        <div class="role-title">Brand Strategist</div>
+      </div>
+    </div>
+    <p class="role-desc">Builds the identity and positioning that creates lasting preference. The Brand Strategist defines what the brand stands for, how it speaks, and what users feel when they encounter it — then makes sure every touchpoint reflects that.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What do users say about us to their colleagues?</li>
+          <li>What emotion does the brand evoke — and is that intentional?</li>
+          <li>What does the name communicate before anyone reads the tagline?</li>
+          <li>What's our positioning vs. the category leader?</li>
+          <li>What values are we willing to take a stand on?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Brand platform</span>
+          <span class="del-tag">Naming</span>
+          <span class="del-tag">Positioning statement</span>
+          <span class="del-tag">Messaging hierarchy</span>
+          <span class="del-tag">Voice principles</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Brand Strategist — naming and positioning</span></div>
+      <div class="example-body">
+        <p><span class="label">Naming direction:</span></p>
+        <ul>
+          <li><span class="bad">Avoid:</span> -fy, -ly, -ify endings. Sounds like 2015 SaaS.</li>
+          <li><span class="bad">Avoid:</span> "Flow", "Stream", "Hub" — already taken 50 times over.</li>
+          <li><span class="good">Direction:</span> A single strong word. Feels like a place, not a feature.</li>
+        </ul>
+        <div class="example-sep"></div>
+        <p><span class="label">Name candidates:</span> <span class="hl">Canvas · Atelier · Folio · Grove · Studio</span></p>
+        <div class="example-sep"></div>
+        <p><span class="label">Positioning statement:</span></p>
+        <p><span class="hl">"For creative teams who ship — not just manage."</span></p>
+        <p style="margin-top:6px">Contrast position: Asana is for process. We're for craft. Their users manage tasks. Our users protect creative momentum.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- CRAFT -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="cat-section" id="craft">
+  <div class="cat-header">
+    <div class="cat-label">Category 04</div>
+    <h2>Craft</h2>
+  </div>
+
+  <!-- 12 COPY STRATEGIST -->
+  <div class="role-card fade-in" id="copy-strategist">
+    <div class="role-header">
+      <div class="role-number">12</div>
+      <div class="role-title-group">
+        <div class="role-tag">Copy</div>
+        <div class="role-title">Copy &amp; Content Strategist</div>
+      </div>
+    </div>
+    <p class="role-desc">Words are a product surface. Every headline, CTA, error message, tooltip, and empty state is designed with the same intentionality as the UI. The Copy Strategist shapes what the product says, how it says it, and whether users trust it.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>Does this CTA say what users get, not what they do?</li>
+          <li>Is the error message helpful or just true?</li>
+          <li>Does the voice stay consistent across all screens?</li>
+          <li>What is the user feeling right now, and does the copy match that?</li>
+          <li>Is the headline answering the user's first question?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Microcopy audit</span>
+          <span class="del-tag">Messaging framework</span>
+          <span class="del-tag">Voice guidelines</span>
+          <span class="del-tag">Error message library</span>
+          <span class="del-tag">Onboarding copy</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Copy Strategist — microcopy rewrites</span></div>
+      <div class="example-body">
+        <p><span class="label">Error messages:</span></p>
+        <p><span class="bad">Before: "Error: File upload failed"</span></p>
+        <p><span class="good">After: "That file's a bit large (max 50MB). Try compressing it first →"</span></p>
+        <div class="example-sep"></div>
+        <p><span class="label">CTAs:</span></p>
+        <p><span class="bad">Before: "Get Started"</span></p>
+        <p><span class="good">After: "Start your free workspace"</span></p>
+        <div class="example-sep"></div>
+        <p><span class="label">Empty state:</span></p>
+        <p><span class="bad">Before: "No projects yet."</span></p>
+        <p><span class="good">After: "Your first project is one upload away. Drag a file in, or connect Figma."</span></p>
+        <div class="example-sep"></div>
+        <p><span class="label">Voice principle:</span> <span class="hl">Helpful over accurate. Clear over clever. Always tell users what to do next.</span></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 13 MOTION DESIGNER -->
+  <div class="role-card fade-in" id="motion-designer">
+    <div class="role-header">
+      <div class="role-number">13</div>
+      <div class="role-title-group">
+        <div class="role-tag">Motion</div>
+        <div class="role-title">Motion Designer &amp; Hero Animation Specialist</div>
+      </div>
+    </div>
+    <p class="role-desc">Creates visual motion that communicates, persuades, and builds trust. Every animation has a job — revealing meaning, guiding attention, or building emotional resonance. Benchmarks against Apple, Stripe, Linear, Framer, Vercel.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What's this animation's job — awareness, trust, or conversion?</li>
+          <li>Does this motion communicate something words can't?</li>
+          <li>What happens on mobile — same or simplified?</li>
+          <li>Does this pass the reduced-motion test?</li>
+          <li>Is this under 200ms?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Hero animation spec (10 sections)</span>
+          <span class="del-tag">Scroll storytelling</span>
+          <span class="del-tag">Micro-interactions</span>
+          <span class="del-tag">Motion system</span>
+          <span class="del-tag">Tech recommendations</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Motion Designer — hero animation spec (abbreviated)</span></div>
+      <div class="example-body">
+        <ul>
+          <li><span class="hl">Hero Objective:</span> Show creative momentum in action — not a feature list. Emotional goal: "I want to feel organized and inspired."</li>
+          <li><span class="hl">Visual Concept:</span> A live project canvas. Files, comments, and version markers appearing and settling — like a team actually working.</li>
+          <li><span class="hl">Motion Concept:</span> Organic gravity. Elements don't slide in — they float into position and settle. Ease-out cubic.</li>
+          <li><span class="hl">Interaction Model:</span> Auto-plays on load. Subtle parallax on cursor move. Pauses if user scrolls past.</li>
+          <li><span class="hl">Tech Stack:</span> GSAP timeline + SVG elements. No Three.js — performance budget is tight for SaaS landing pages.</li>
+          <li><span class="hl">Mobile Strategy:</span> Static screenshot with subtle CSS scale on scroll. No JS animation on mobile.</li>
+          <li><span class="hl">Conversion:</span> Animation ends with a completed project state → CTA animates in. Motion creates the "I want that" moment.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 14 FRONTEND ENGINEER -->
+  <div class="role-card fade-in" id="frontend-engineer">
+    <div class="role-header">
+      <div class="role-number">14</div>
+      <div class="role-title-group">
+        <div class="role-tag">Frontend</div>
+        <div class="role-title">Front-End Experience Engineer</div>
+      </div>
+    </div>
+    <p class="role-desc">Makes interactions feel polished, fast, and intentional at the code level. The Front-End Experience Engineer bridges design and engineering — ensuring the product feels as good in the browser as it looks in Figma.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>Does this hover state give meaningful feedback?</li>
+          <li>Is the loading state communicating progress or just spinning?</li>
+          <li>What's the perceived performance — even before the data loads?</li>
+          <li>Are transitions GPU-composited (transform/opacity only)?</li>
+          <li>Does this feel like a $200/mo tool or a free tool?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Interaction specs</span>
+          <span class="del-tag">Micro-animation CSS</span>
+          <span class="del-tag">Skeleton screens</span>
+          <span class="del-tag">Optimistic UI patterns</span>
+          <span class="del-tag">Performance audit</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Front-End Engineer — drag-and-drop upload zone fix</span></div>
+      <div class="example-body">
+        <p><span class="label">Issue found:</span></p>
+        <p>The file upload drag zone doesn't acknowledge a drag-over event. Users aren't sure if the zone is active.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Fix (4 lines of CSS, 3 lines of JS):</span></p>
+        <p><span class="hl">On drag-over:</span> border transitions from dashed gray → solid accent color. Label animates from "Upload files" → "Drop to upload ↓".</p>
+        <p style="margin-top:6px"><span class="hl">On drop:</span> brief scale pulse (transform: scale(0.98) → 1, 120ms ease). Confirms receipt without a modal.</p>
+        <div class="example-sep"></div>
+        <p>Four lines of CSS changes the entire feel of the interaction. This is the difference between functional and polished.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- TECHNOLOGY -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="cat-section" id="technology">
+  <div class="cat-header">
+    <div class="cat-label">Category 05</div>
+    <h2>Technology</h2>
+  </div>
+
+  <!-- 15 ARCHITECT -->
+  <div class="role-card fade-in" id="architect">
+    <div class="role-header">
+      <div class="role-number">15</div>
+      <div class="role-title-group">
+        <div class="role-tag">Architecture</div>
+        <div class="role-title">Senior Software Architect</div>
+      </div>
+    </div>
+    <p class="role-desc">Designs the system that makes everything else possible. The Architect thinks in trade-offs, failure modes, and 10x scale — making sure the technical foundation doesn't become the product's ceiling.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What's the data model and does it support all planned features?</li>
+          <li>How does this scale to 10,000 teams?</li>
+          <li>What's the blast radius if this service fails?</li>
+          <li>What are we building that we should be buying?</li>
+          <li>Where are the performance bottlenecks at scale?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">System architecture</span>
+          <span class="del-tag">API design</span>
+          <span class="del-tag">Database schema</span>
+          <span class="del-tag">Infrastructure plan</span>
+          <span class="del-tag">Security model</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Software Architect — asset storage and real-time architecture</span></div>
+      <div class="example-body">
+        <p><span class="label">Asset storage decision:</span></p>
+        <p><span class="hl">Don't build it. Buy it.</span> S3 + CloudFront + pre-signed URLs. You'll spend 6 months building what S3 solves today. Your differentiation is the product layer, not the storage layer.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">The hard architecture problem:</span></p>
+        <p>Real-time presence (who's viewing what, live cursors, comment threads). <span class="hl">Do not run this through your main REST API.</span> Use a dedicated WebSocket service (Ably or a custom Go service). Main API stays stateless.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Data model risk:</span></p>
+        <p>If you model assets as files, you'll regret it. Model as <span class="hl">asset versions</span> (parent: Asset, children: AssetVersion[]). Every upload is a version. Rollback is free. Diff is queryable.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 16 DATA & ANALYTICS -->
+  <div class="role-card fade-in" id="data-analytics">
+    <div class="role-header">
+      <div class="role-number">16</div>
+      <div class="role-title-group">
+        <div class="role-tag">Analytics</div>
+        <div class="role-title">Data &amp; Analytics Lead</div>
+      </div>
+    </div>
+    <p class="role-desc">Instruments the product to learn continuously. The Analytics Lead defines what success looks like before shipping — setting up the measurement infrastructure that tells you what's working, what's not, and why.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What's our North Star Metric?</li>
+          <li>What does "activated" mean for this product — specifically?</li>
+          <li>What events do we need to track before launch, not after?</li>
+          <li>How do we measure quality, not just quantity?</li>
+          <li>What does a healthy cohort look like at 30/60/90 days?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">KPI framework</span>
+          <span class="del-tag">Event taxonomy</span>
+          <span class="del-tag">Retention analysis</span>
+          <span class="del-tag">A/B test design</span>
+          <span class="del-tag">Dashboard specs</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Data Lead — North Star and leading indicators</span></div>
+      <div class="example-body">
+        <p><span class="label">North Star Metric:</span></p>
+        <p><span class="hl">"Teams with ≥3 members who complete at least one project cycle within 30 days of signup."</span></p>
+        <p style="margin-top:6px">This captures user value (teams ship), business value (paid tiers, retention), and product-market fit (not just signups).</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Leading indicators to instrument before launch:</span></p>
+        <ul>
+          <li><span class="hl">Day 1:</span> First file uploaded within 24h of signup (target: 60%)</li>
+          <li><span class="hl">Day 2:</span> Second team member invited within 48h (target: 40%)</li>
+          <li><span class="hl">Day 7:</span> First comment on an asset (target: 35%)</li>
+        </ul>
+        <p style="margin-top:8px">Track these before retention cohorts exist. They're your early warning system.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 17 AI SYSTEMS -->
+  <div class="role-card fade-in" id="ai-systems">
+    <div class="role-header">
+      <div class="role-number">17</div>
+      <div class="role-title-group">
+        <div class="role-tag">AI</div>
+        <div class="role-title">AI Systems Designer</div>
+      </div>
+    </div>
+    <p class="role-desc">Designs intelligent features that feel helpful, not intrusive. The AI Systems Designer asks where AI genuinely reduces work — not where it adds "AI" for its own sake — and designs for the reality that AI outputs are probabilistic, not deterministic.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>Where is AI reducing real user work, not just adding features?</li>
+          <li>What's the user experience when AI is wrong?</li>
+          <li>Do users have a clear override path at every AI decision?</li>
+          <li>How do we instrument AI quality — accept, edit, reject rates?</li>
+          <li>What does graceful degradation look like when AI is slow?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">AI feature specs</span>
+          <span class="del-tag">Prompt architecture</span>
+          <span class="del-tag">AI UX patterns</span>
+          <span class="del-tag">Quality instrumentation</span>
+          <span class="del-tag">Fallback design</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">AI Systems Designer — project brief generation feature</span></div>
+      <div class="example-body">
+        <p><span class="label">Opportunity:</span></p>
+        <p>User uploads brand guide PDF + logo files → AI drafts a project brief with context, constraints, and creative direction extracted from those assets.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">AI UX principles for this feature:</span></p>
+        <ul>
+          <li><span class="hl">Present as draft, not final.</span> "Here's a starting point —" not "Your brief is ready."</li>
+          <li><span class="hl">Inline editing.</span> Every AI-generated line is editable. Users need to feel in control.</li>
+          <li><span class="hl">Source attribution.</span> Hover a generated line to see which uploaded file it came from. Builds trust.</li>
+          <li><span class="hl">Measure quality.</span> Track "accepted as-is" vs "edited" vs "deleted." That ratio tells you if AI is earning its place.</li>
+          <li><span class="hl">Fallback:</span> If AI fails or is slow, show a blank brief template. Never show an error — show a tool.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- GROWTH -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="cat-section" id="growth">
+  <div class="cat-header">
+    <div class="cat-label">Category 06</div>
+    <h2>Growth</h2>
+  </div>
+
+  <!-- 18 GROWTH CONSULTANT -->
+  <div class="role-card fade-in" id="growth-consultant">
+    <div class="role-header">
+      <div class="role-number">18</div>
+      <div class="role-title-group">
+        <div class="role-tag">Growth</div>
+        <div class="role-title">Growth Consultant</div>
+      </div>
+    </div>
+    <p class="role-desc">Designs systems that bring users in and keep them coming back. The Growth Consultant looks for natural viral loops, acquisition leverage, and retention mechanics — building flywheels that compound rather than campaigns that decay.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What's the viral loop — where does the product spread itself?</li>
+          <li>Where does acquisition happen most naturally?</li>
+          <li>What causes users to come back without a notification?</li>
+          <li>What's the referral mechanic built into core product usage?</li>
+          <li>What creates compounding retention over time?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Growth model</span>
+          <span class="del-tag">Acquisition analysis</span>
+          <span class="del-tag">Retention playbook</span>
+          <span class="del-tag">Referral mechanics</span>
+          <span class="del-tag">Viral loop design</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Growth Consultant — built-in viral loop</span></div>
+      <div class="example-body">
+        <p><span class="label">Built-in growth loop (no paid acquisition needed):</span></p>
+        <p>When a team shares a project with a client for review, the review link is a <span class="hl">public, branded page</span>. The client — a non-user — sees the product working in their context.</p>
+        <div class="example-sep"></div>
+        <ul>
+          <li>Footer: <span class="hl">"Built with [Product] — free for creative teams →"</span></li>
+          <li>Every client review is a product demo. Zero friction. High intent (they're already seeing value).</li>
+          <li>This is how Figma grew: every "view the design" link was a Figma acquisition touchpoint.</li>
+        </ul>
+        <div class="example-sep"></div>
+        <p><span class="label">Retention flywheel:</span> The more projects a team stores, the more expensive it is to leave. Asset history IS the moat.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 19 CONVERSION ARCHITECT -->
+  <div class="role-card fade-in" id="conversion-architect">
+    <div class="role-header">
+      <div class="role-number">19</div>
+      <div class="role-title-group">
+        <div class="role-tag">Conversion</div>
+        <div class="role-title">Conversion Experience Architect</div>
+      </div>
+    </div>
+    <p class="role-desc">Optimizes the path from visitor to activated user. The Conversion Architect reduces decision friction, addresses objections before they arise, and ensures that every step of the funnel guides users toward their goal — and the product's.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What is the visitor's first question when they land?</li>
+          <li>Are we answering it above the fold?</li>
+          <li>Where are users abandoning the funnel and why?</li>
+          <li>What objection is killing conversions and how do we handle it?</li>
+          <li>What trust signal is missing at the decision moment?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Landing page CRO</span>
+          <span class="del-tag">Funnel analysis</span>
+          <span class="del-tag">Onboarding optimization</span>
+          <span class="del-tag">Trust signal audit</span>
+          <span class="del-tag">A/B test priorities</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Conversion Architect — landing page audit</span></div>
+      <div class="example-body">
+        <p><span class="label">Hero headline audit:</span></p>
+        <p><span class="bad">Before: "The future of creative collaboration"</span></p>
+        <p style="margin-top:6px">Answers nothing. Every B2B SaaS sounds like this. Visitor's first question ("is this for me?") goes unanswered.</p>
+        <div class="example-sep"></div>
+        <p><span class="good">After: "Project management built for design teams. Ship faster, lose fewer assets, review without chaos."</span></p>
+        <div class="example-sep"></div>
+        <p><span class="label">Three things the rewrite does:</span></p>
+        <ul>
+          <li>Names the audience (<span class="hl">design teams</span>) in the first 4 words — self-qualifies visitors instantly</li>
+          <li>Three concrete outcomes — no abstract promises</li>
+          <li>"Review without chaos" names the exact frustration from user research</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 20 COMMUNITY DESIGNER -->
+  <div class="role-card fade-in" id="community-designer">
+    <div class="role-header">
+      <div class="role-number">20</div>
+      <div class="role-title-group">
+        <div class="role-tag">Community</div>
+        <div class="role-title">Community &amp; Ecosystem Designer</div>
+      </div>
+    </div>
+    <p class="role-desc">Creates the flywheel beyond the product itself. Products with network effects and community ecosystems outlast products that don't. The Community Designer builds the structures that make users bring other users — and make the product more valuable the more people use it.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What would make users bring their entire team?</li>
+          <li>What would make agencies recommend us to their clients?</li>
+          <li>How does the product become more valuable as more users join?</li>
+          <li>What can users create for each other?</li>
+          <li>What's the developer ecosystem opportunity?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Community strategy</span>
+          <span class="del-tag">Ecosystem design</span>
+          <span class="del-tag">Creator program</span>
+          <span class="del-tag">Template marketplace</span>
+          <span class="del-tag">Network effect analysis</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Community Designer — template ecosystem strategy</span></div>
+      <div class="example-body">
+        <p><span class="label">Community play: Design Sprint Template Library</span></p>
+        <p>Pre-built project structures teams can fork in one click: Brand Refresh, Website Redesign, App Audit, Design System Build, Client Presentation.</p>
+        <div class="example-sep"></div>
+        <ul>
+          <li>Users contribute templates, get a creator profile, earn followers</li>
+          <li>Top templates are <span class="hl">content that drives SEO and word-of-mouth</span> — "best design sprint template" searches land in our ecosystem</li>
+          <li>Agencies build custom templates for their workflow → they're now invested in the platform</li>
+          <li>Switching cost becomes infinite: your entire team's workflow DNA is in your custom templates</li>
+        </ul>
+        <div class="example-sep"></div>
+        <p><span class="hl">Content is the product. The community builds the moat.</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- INNOVATION & QA -->
+<!-- ═══════════════════════════════════════════ -->
+<div class="cat-section" id="innovation">
+  <div class="cat-header">
+    <div class="cat-label">Category 07</div>
+    <h2>Innovation &amp; QA</h2>
+  </div>
+
+  <!-- 21 INNOVATION DIRECTOR -->
+  <div class="role-card fade-in" id="innovation-director">
+    <div class="role-header">
+      <div class="role-number">21</div>
+      <div class="role-title-group">
+        <div class="role-tag">Innovation</div>
+        <div class="role-title">Innovation &amp; Future Trends Director</div>
+      </div>
+    </div>
+    <p class="role-desc">Sees around corners. The Innovation Director challenges shared assumptions, spots emerging shifts before they're obvious, and identifies category-defining moves that competitors will take years to copy — if they ever do.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>What assumption do all competitors share that might be wrong?</li>
+          <li>What will users expect in 3 years that no one offers today?</li>
+          <li>What would a 10x better version of this product look like?</li>
+          <li>What emerging technology changes the rules of this category?</li>
+          <li>What could we build that no competitor could copy quickly?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">Innovation opportunities</span>
+          <span class="del-tag">Technology bets</span>
+          <span class="del-tag">Category-defining concepts</span>
+          <span class="del-tag">Assumption challenges</span>
+          <span class="del-tag">Future scenario mapping</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">Innovation Director — category-defining concept</span></div>
+      <div class="example-body">
+        <p><span class="label">Shared assumption in this category:</span></p>
+        <p><span class="hl">Projects are organized by files and tasks.</span> Every competitor — Asana, Linear, Notion, Figma — organizes around these primitives.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">The challenger question:</span></p>
+        <p>What if the primary unit was <span class="hl">decisions</span>?</p>
+        <p style="margin-top:6px">Every design project is really a series of decisions: "We chose this typeface because...". "We rejected dark mode because...". "The client requested this change on [date]."</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Category-defining move:</span></p>
+        <p>A <span class="hl">Decision Log</span> native to the project — not a Notion doc, not a comment thread. Structured: Decision · Rationale · Who · When · Linked assets.</p>
+        <p style="margin-top:6px">When you join a project, you read decisions, not folders. When AI summarizes your project, it summarizes decisions. No competitor is doing this. The moat is deep because it requires rethinking the data model, not just adding a feature.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 22 QA LEAD -->
+  <div class="role-card fade-in" id="qa-lead">
+    <div class="role-header">
+      <div class="role-number">22</div>
+      <div class="role-title-group">
+        <div class="role-tag">Quality</div>
+        <div class="role-title">Quality Assurance Lead</div>
+      </div>
+    </div>
+    <p class="role-desc">Catches everything before it ships. The QA Lead reviews the product through every lens — usability, accessibility, branding, performance, edge cases — and surfaces blockers before they become user problems or brand damage.</p>
+    <div class="role-body">
+      <div class="role-col">
+        <h4>Key Questions</h4>
+        <ul class="asks-list">
+          <li>Have we tested the empty state and the error state?</li>
+          <li>What happens if a file upload fails at 95%?</li>
+          <li>Does this work on an iPhone SE and a 4K monitor?</li>
+          <li>Is every interactive element keyboard-accessible?</li>
+          <li>Does the product look and sound like one team built it?</li>
+        </ul>
+      </div>
+      <div class="role-col">
+        <h4>Delivers</h4>
+        <div class="delivers-list">
+          <span class="del-tag">QA checklist</span>
+          <span class="del-tag">Accessibility audit</span>
+          <span class="del-tag">Edge case documentation</span>
+          <span class="del-tag">Launch gate review</span>
+          <span class="del-tag">Regression test plan</span>
+        </div>
+        <br><h4 style="margin-top:12px">Example Output</h4>
+      </div>
+    </div>
+    <div class="example-block">
+      <div class="example-header"><div class="example-dot"></div><span class="example-label">QA Lead — pre-launch blocker found</span></div>
+      <div class="example-body">
+        <p><span class="label">🚫 Launch blocker — severity: high</span></p>
+        <p>The "Invite your team" email CTA button renders off-screen on iPhone SE (375px viewport). The button is 340px wide but the email has 32px horizontal padding — 4px overflow clips the right edge of the button on narrow devices.</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Impact:</span> 12% of our target design audience uses SE-class devices (source: analytics). This email fires at the most critical activation moment (first 24h).</p>
+        <div class="example-sep"></div>
+        <p><span class="label">Fix:</span> <code>max-width: 100%; box-sizing: border-box;</code> on the CTA container. 2-minute change.</p>
+        <div class="example-sep"></div>
+        <p><span class="hl">Not a blocker to flag after launch. A blocker to catch before it.</span> That's the QA mandate.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</main>
+</div>
+
+<!-- BACK TO TOP -->
+<button id="backToTop" title="Back to top">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+// Hero h1 word-by-word stagger
+(function(){
+  const h1 = document.getElementById('hero-h1');
+  if (!h1) return;
+  const words = ['What','every','<em>specialist</em>','actually','does'];
+  h1.innerHTML = words.map((w,i) =>
+    `<span class="word" style="animation-delay:${.18 + i*.09}s">${w}</span>`
+  ).join(' ');
+})();
+
+// Count-up + pulse for hero stats
+document.querySelectorAll('.hstat-val').forEach((el, i) => {
+  const target = +el.dataset.target;
+  setTimeout(() => {
+    const t0 = performance.now(), dur = 900;
+    (function tick(now){
+      const p = Math.min((now-t0)/dur,1), e = 1-Math.pow(1-p,3);
+      el.textContent = Math.round(target*e);
+      if(p<1) requestAnimationFrame(tick);
+      else el.style.animation = 'stat-pulse 380ms cubic-bezier(.22,1,.36,1) both';
+    })(performance.now());
+  }, 750 + i * 120);
+});
+
+// Theme toggle
+const root = document.documentElement;
+document.getElementById('themeToggle').addEventListener('click', () => {
+  const isLight = root.getAttribute('data-theme') === 'light';
+  if (isLight) { root.removeAttribute('data-theme'); localStorage.setItem('html-it-theme','dark'); }
+  else { root.setAttribute('data-theme','light'); localStorage.setItem('html-it-theme','light'); }
+});
+
+// Back to top
+const btn = document.getElementById('backToTop');
+window.addEventListener('scroll', () => btn.classList.toggle('show', window.scrollY > 500));
+btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+// Fade in
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.06 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+// Sidebar active link on scroll
+const sections = document.querySelectorAll('[id]');
+const links = document.querySelectorAll('.sidebar-link');
+const linkMap = {};
+links.forEach(l => { const id = l.getAttribute('href').slice(1); linkMap[id] = l; });
+
+const scrollObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      links.forEach(l => l.classList.remove('active'));
+      const link = linkMap[e.target.id];
+      if (link) link.classList.add('active');
+    }
+  });
+}, { rootMargin: '-168px 0px -50% 0px' });
+sections.forEach(s => scrollObs.observe(s));
+</script>
+</body>
+</html>

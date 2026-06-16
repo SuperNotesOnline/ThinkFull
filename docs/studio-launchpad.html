@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prompt Studio — Ultimate Agent</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+<script>if(localStorage.getItem('html-it-theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#0D0D0C;--surface:#161614;--s2:#1F1F1D;--s3:#272725;--border:#2E2E2B;
+  --text:#FFFFFF;--muted:#D8D5D0;--dim:#9A9590;
+  --accent:#D97757;--acc-h:#E8865E;--success:#8FAF6A;
+  --code-bg:#111110;--code-text:#E8E5DF;--nav-bg:rgba(13,13,12,0.9);
+  --sans:'Inter',system-ui,sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+}
+html[data-theme="light"] {
+  --bg:#FAF9F5;--surface:#FFFFFF;--s2:#F0EEE6;--s3:#E6E3DA;--border:#D1CFC5;
+  --text:#141413;--muted:#4A4740;--dim:#87867F;--accent:#B85C35;--acc-h:#9E4D2A;
+  --success:#5A7A3A;--code-bg:#1A1A18;--code-text:#E8E5DF;--nav-bg:rgba(250,249,245,0.92);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);-webkit-font-smoothing:antialiased;font-feature-settings:"cv01","cv02","cv09"}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;height:52px;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px;z-index:100}
+.nav-left{display:flex;align-items:center;gap:10px}
+.nav-logo{width:26px;height:26px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nav-logo svg{color:#fff}
+.nav-title{font:700 13px/1 var(--sans);letter-spacing:-0.01em}
+.nav-sep{color:var(--border);font-size:16px}
+.nav-right{display:flex;align-items:center;gap:6px}
+.nav-link{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:0.08em;padding:5px 10px;border-radius:6px;background:var(--s2);border:1px solid var(--border);color:var(--dim);text-decoration:none;transition:color 130ms,border-color 130ms,background 130ms}
+.nav-link:hover{color:var(--accent);border-color:var(--accent);background:rgba(217,119,87,0.06)}
+.theme-toggle{width:30px;height:30px;border-radius:6px;background:transparent;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);transition:background 130ms,color 130ms}
+.theme-toggle:hover{background:var(--s2);color:var(--text)}
+html[data-theme="light"] .icon-moon{display:none}
+html:not([data-theme="light"]) .icon-sun{display:none}
+
+/* LAYOUT */
+main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
+
+/* ── HERO ─────────────────────────────────────────── */
+.hero{
+  position:relative;min-height:420px;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;align-items:center;
+  padding:0 36px 56px;border-bottom:1px solid var(--border);
+}
+/* Radial glow */
+.hero-glow{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  width:760px;height:500px;pointer-events:none;
+  background:radial-gradient(ellipse,rgba(217,119,87,0.14) 0%,transparent 65%);
+  animation:glow-pulse 6s ease-in-out infinite;
+}
+@keyframes glow-pulse{
+  0%,100%{opacity:.85;transform:translate(-50%,-50%) scale(1)}
+  50%{opacity:1;transform:translate(-50%,-50%) scale(1.12)}
+}
+/* Marquee */
+.hero-marquee{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:center;gap:10px;pointer-events:none;overflow:hidden;
+}
+.mq-row{display:flex;white-space:nowrap}
+.mq-track{display:flex;animation:mq-ltr 38s linear infinite}
+.mq-row:nth-child(2) .mq-track{animation:mq-rtl 48s linear infinite}
+.mq-row:nth-child(3) .mq-track{animation:mq-ltr 30s linear infinite}
+.mq-pill{
+  font:700 26px/1 var(--sans);letter-spacing:-0.02em;
+  padding:0 30px;color:var(--text);opacity:.07;
+}
+.mq-row:nth-child(2) .mq-pill{opacity:.05}
+.mq-row:nth-child(3) .mq-pill{opacity:.04}
+@keyframes mq-ltr{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes mq-rtl{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+/* Edge fade masks */
+.hero::before,.hero::after{
+  content:'';position:absolute;top:0;bottom:0;width:160px;z-index:2;pointer-events:none;
+}
+.hero::before{left:0;background:linear-gradient(to right,var(--bg) 20%,transparent)}
+.hero::after{right:0;background:linear-gradient(to left,var(--bg) 20%,transparent)}
+/* Content layer */
+.hero-content{position:relative;z-index:3;text-align:center;width:100%}
+/* Eyebrow */
+.hero-eyebrow{
+  display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:18px;
+  font:600 10px/1 var(--mono);text-transform:uppercase;
+  letter-spacing:0.12em;color:var(--accent);
+}
+.eyebrow-line{
+  display:inline-block;height:1.5px;background:var(--accent);
+  width:0;animation:draw-line 400ms cubic-bezier(.4,0,.2,1) 180ms both;
+}
+@keyframes draw-line{to{width:22px}}
+/* H1 */
+.hero-h1{
+  font:800 clamp(44px,7vw,80px)/1.03 var(--sans);
+  letter-spacing:-0.04em;margin-bottom:16px;
+}
+.hero-h1 em{font-style:italic;color:var(--accent)}
+.hero-h1 .word{
+  display:inline-block;opacity:0;transform:translateY(32px);
+  animation:word-up 520ms cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes word-up{to{opacity:1;transform:none}}
+/* Subtitle */
+.hero-sub{
+  font-size:14px;color:var(--muted);max-width:520px;line-height:1.75;
+  margin:0 auto;
+  opacity:0;animation:fade-up 380ms ease 720ms both;
+}
+@keyframes fade-up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* Stats bar */
+.hero-stats{
+  display:inline-flex;gap:0;margin-top:36px;
+  border:1px solid var(--border);border-radius:10px;
+  background:rgba(255,255,255,0.025);
+  overflow:hidden;
+}
+.hstat{padding:18px 32px;position:relative}
+.hstat+.hstat::before{
+  content:'';position:absolute;left:0;top:20%;height:60%;
+  width:1px;background:var(--border);
+}
+.hstat-val{
+  display:block;font:800 30px/1 var(--sans);
+  letter-spacing:-0.035em;color:var(--text);margin-bottom:6px;
+}
+.hstat-label{
+  display:block;font:500 10px/1 var(--mono);
+  text-transform:uppercase;letter-spacing:0.09em;color:var(--dim);
+}
+@keyframes stat-pulse{
+  0%{transform:scale(1)}
+  45%{transform:scale(1.12);color:var(--accent)}
+  100%{transform:scale(1)}
+}
+@media(max-width:600px){
+  .hero{padding-left:20px;padding-right:20px;min-height:360px}
+  .hero-stats{flex-direction:column;width:100%}
+  .hstat+.hstat::before{top:0;left:20%;width:60%;height:1px}
+}
+
+/* STEP SECTION */
+.step-section{padding:40px 36px;border-bottom:1px solid var(--border)}
+.step-label{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.step-label::before{content:'';display:inline-block;width:14px;height:1.5px;background:var(--accent)}
+.step-section h2{font:700 18px/1.2 var(--sans);letter-spacing:-0.02em;color:var(--text);margin-bottom:6px}
+.step-desc{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.65}
+
+/* MODE CARDS */
+.mode-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+@media(max-width:680px){.mode-grid{grid-template-columns:1fr 1fr}}
+.mode-card{background:var(--surface);border:1.5px solid var(--border);border-radius:10px;padding:20px 16px 16px;cursor:pointer;transition:border-color 150ms,background 150ms,transform 150ms;text-align:left;position:relative;font-family:var(--sans)}
+.mode-card:hover{border-color:var(--muted);background:var(--s2);transform:translateY(-2px)}
+.mode-card.active{border-color:var(--accent);background:rgba(217,119,87,0.07)}
+.mc-icon{display:block;margin-bottom:12px;opacity:0.7}
+.mc-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.5}
+.mode-card.active .mc-icon{opacity:1}
+.mc-label{font:700 13px/1.2 var(--sans);letter-spacing:-0.01em;color:var(--text);margin-bottom:5px}
+.mc-desc{font:400 11px/1.4 var(--mono);color:var(--dim)}
+.mode-card.active .mc-label{color:var(--accent)}
+.mc-check{position:absolute;top:10px;right:12px;width:18px;height:18px;border-radius:50%;background:var(--accent);display:none;align-items:center;justify-content:center}
+.mc-check svg{width:10px;height:10px;stroke:#fff;stroke-width:2.5}
+.mode-card.active .mc-check{display:flex}
+
+/* FORM */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:7px}
+.field.full{grid-column:1/-1}
+.field label{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:0.09em;color:var(--dim)}
+.field input,.field textarea,.field select{
+  background:var(--surface);border:1.5px solid var(--border);border-radius:8px;
+  padding:10px 13px;font:400 13px/1.5 var(--sans);color:var(--text);outline:none;
+  transition:border-color 150ms,box-shadow 150ms;resize:vertical;-webkit-appearance:none;
+  font-family:var(--sans)
+}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(217,119,87,0.1)}
+.field textarea{min-height:88px}
+.field select option{background:var(--bg);color:var(--text)}
+.field input::placeholder,.field textarea::placeholder{color:var(--dim)}
+
+/* ROLE CHIPS */
+.roles-wrap{display:flex;flex-direction:column;gap:18px}
+.role-cat-label{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:0.09em;color:var(--dim);margin-bottom:9px;display:block}
+.chips-row{display:flex;flex-wrap:wrap;gap:7px}
+.role-chip{
+  font:500 11px/1 var(--mono);padding:7px 13px;border-radius:100px;
+  border:1.5px solid var(--border);background:var(--s2);color:var(--dim);
+  cursor:pointer;transition:all 130ms;user-select:none
+}
+.role-chip:hover{border-color:var(--muted);color:var(--text)}
+.role-chip.supporting{border-color:var(--border);background:var(--surface);color:var(--text)}
+.role-chip.primary{border-color:var(--accent);background:rgba(217,119,87,0.13);color:var(--accent);font-weight:600}
+.legend{display:flex;gap:20px;margin-bottom:18px;flex-wrap:wrap}
+.legend-item{display:flex;align-items:center;gap:7px;font:400 11px/1 var(--mono);color:var(--muted)}
+.legend-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.legend-dot.primary{background:var(--accent)}
+.legend-dot.supporting{background:var(--text)}
+.legend-dot.off{background:var(--border)}
+
+/* OUTPUT */
+.output-section{padding:40px 36px}
+.output-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px}
+.output-header h2{font:700 18px/1 var(--sans);letter-spacing:-0.02em}
+.output-meta{font:400 11px/1 var(--mono);color:var(--dim);background:var(--s2);border:1px solid var(--border);padding:5px 10px;border-radius:6px}
+.prompt-box{background:var(--code-bg);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.prompt-box-header{display:flex;align-items:center;gap:10px;padding:11px 18px;border-bottom:1px solid var(--border);background:rgba(255,255,255,0.02)}
+.pdots{display:flex;gap:5px}
+.pdot{width:10px;height:10px;border-radius:50%}
+.pdot:nth-child(1){background:#FF5F57}.pdot:nth-child(2){background:#FFBD2E}.pdot:nth-child(3){background:#28C840}
+.prompt-box-label{font:500 10px/1 var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:0.1em;margin-left:4px}
+.prompt-text{padding:22px;font:400 12px/1.8 var(--mono);color:var(--code-text);white-space:pre-wrap;word-break:break-word;min-height:220px;max-height:520px;overflow-y:auto}
+.prompt-text::-webkit-scrollbar{width:4px}
+.prompt-text::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.prompt-empty{font:400 12px/1.7 var(--mono);color:var(--dim);font-style:italic}
+.copy-row{padding:14px 18px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px}
+.copy-hint{font:400 11px/1 var(--mono);color:var(--dim)}
+.copy-btn{font:600 11px/1 var(--mono);padding:10px 22px;border-radius:7px;background:var(--accent);border:none;color:#fff;cursor:pointer;transition:background 150ms,transform 150ms;letter-spacing:0.06em;text-transform:uppercase}
+.copy-btn:hover{background:var(--acc-h);transform:translateY(-1px)}
+.copy-btn.copied{background:var(--success)}
+
+/* BACK TO TOP */
+#backToTop{position:fixed;bottom:24px;right:24px;width:38px;height:38px;border-radius:8px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);opacity:0;transform:translateY(6px);transition:opacity 180ms,transform 180ms,background 130ms,color 130ms;z-index:99}
+#backToTop.show{opacity:1;transform:none}
+#backToTop:hover{background:var(--s2);color:var(--text)}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(12px);transition:opacity 160ms ease,transform 160ms ease}
+.fade-in.visible{opacity:1;transform:none}
+
+@media(max-width:600px){.page-hero,.step-section,.output-section{padding-left:20px;padding-right:20px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.fade-in{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-left">
+    <div class="nav-logo">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    </div>
+    <span class="nav-title">Prompt Studio</span>
+  </div>
+  <div class="nav-right">
+    <a href="ultimate-agent.html" class="nav-link">Framework</a>
+    <a href="agent-roles.html" class="nav-link">Role Reference</a>
+    <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+      <svg class="icon-sun" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+
+  <div class="hero-marquee" aria-hidden="true">
+    <div class="mq-row"><div class="mq-track">
+      <span class="mq-pill">SaaS</span><span class="mq-pill">E-Commerce</span><span class="mq-pill">Mobile App</span><span class="mq-pill">AI Product</span><span class="mq-pill">Product Strategy</span><span class="mq-pill">Growth</span><span class="mq-pill">Conversion</span><span class="mq-pill">Brand</span><span class="mq-pill">Innovation</span>
+      <span class="mq-pill">SaaS</span><span class="mq-pill">E-Commerce</span><span class="mq-pill">Mobile App</span><span class="mq-pill">AI Product</span><span class="mq-pill">Product Strategy</span><span class="mq-pill">Growth</span><span class="mq-pill">Conversion</span><span class="mq-pill">Brand</span><span class="mq-pill">Innovation</span>
+    </div></div>
+    <div class="mq-row"><div class="mq-track">
+      <span class="mq-pill">UX Design</span><span class="mq-pill">Motion</span><span class="mq-pill">Architecture</span><span class="mq-pill">Analytics</span><span class="mq-pill">Copy</span><span class="mq-pill">Community</span><span class="mq-pill">UI Design</span><span class="mq-pill">Front-End</span><span class="mq-pill">Research</span>
+      <span class="mq-pill">UX Design</span><span class="mq-pill">Motion</span><span class="mq-pill">Architecture</span><span class="mq-pill">Analytics</span><span class="mq-pill">Copy</span><span class="mq-pill">Community</span><span class="mq-pill">UI Design</span><span class="mq-pill">Front-End</span><span class="mq-pill">Research</span>
+    </div></div>
+    <div class="mq-row"><div class="mq-track">
+      <span class="mq-pill">Studio Mode</span><span class="mq-pill">22 Specialists</span><span class="mq-pill">18 Sections</span><span class="mq-pill">Quality Gate</span><span class="mq-pill">Quick Mode</span><span class="mq-pill">Hybrid Mode</span><span class="mq-pill">4 Industry Modes</span><span class="mq-pill">Founder</span>
+      <span class="mq-pill">Studio Mode</span><span class="mq-pill">22 Specialists</span><span class="mq-pill">18 Sections</span><span class="mq-pill">Quality Gate</span><span class="mq-pill">Quick Mode</span><span class="mq-pill">Hybrid Mode</span><span class="mq-pill">4 Industry Modes</span><span class="mq-pill">Founder</span>
+    </div></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-line"></span>
+      <span>Ultimate Agent</span>
+    </div>
+    <h1 class="hero-h1" id="heroTitle"></h1>
+    <p class="hero-sub">Pick an industry mode, describe your challenge, activate your specialists — get a ready-to-paste Studio Mode prompt in seconds.</p>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-val" data-target="4">0</span><span class="hstat-label">Industry Modes</span></div>
+      <div class="hstat"><span class="hstat-val" data-target="22">0</span><span class="hstat-label">Specialists</span></div>
+      <div class="hstat"><span class="hstat-val" data-target="18">0</span><span class="hstat-label">Deliverable Sections</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STEP 1: INDUSTRY MODE -->
+<div class="step-section fade-in">
+  <div class="step-label">Step 01</div>
+  <h2>Industry Mode</h2>
+  <p class="step-desc">Select your product type to pre-load the right specialist weights. Click a card to activate it.</p>
+  <div class="mode-grid">
+
+    <button class="mode-card" data-mode="saas">
+      <span class="mc-icon">
+        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 17.5h7M17.5 14v7"/></svg>
+      </span>
+      <div class="mc-label">SaaS / B2B</div>
+      <div class="mc-desc">Subscription products and B2B platform tools</div>
+      <div class="mc-check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>
+    </button>
+
+    <button class="mode-card" data-mode="ecommerce">
+      <span class="mc-icon">
+        <svg viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      </span>
+      <div class="mc-label">E-commerce</div>
+      <div class="mc-desc">Online stores, marketplaces, retail experiences</div>
+      <div class="mc-check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>
+    </button>
+
+    <button class="mode-card" data-mode="mobile">
+      <span class="mc-icon">
+        <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18" stroke-linecap="round" stroke-width="2.5"/></svg>
+      </span>
+      <div class="mc-label">Mobile App</div>
+      <div class="mc-desc">Native iOS / Android and cross-platform apps</div>
+      <div class="mc-check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>
+    </button>
+
+    <button class="mode-card" data-mode="ai">
+      <span class="mc-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
+      </span>
+      <div class="mc-label">AI Product</div>
+      <div class="mc-desc">LLM integrations and intelligent systems</div>
+      <div class="mc-check"><svg viewBox="0 0 12 12"><polyline points="2 6 5 9 10 3"/></svg></div>
+    </button>
+
+  </div>
+</div>
+
+<!-- STEP 2: PROJECT DETAILS -->
+<div class="step-section fade-in">
+  <div class="step-label">Step 02</div>
+  <h2>Project Details</h2>
+  <p class="step-desc">Fill in what you know. Every field improves the output — skip anything you don't have yet.</p>
+  <div class="form-grid">
+    <div class="field">
+      <label>Product / Project Name</label>
+      <input type="text" id="fName" placeholder="e.g. Atelier, Canvas, Studio">
+    </div>
+    <div class="field">
+      <label>Current Stage</label>
+      <select id="fStage">
+        <option value="">Select stage...</option>
+        <option value="Validation">Validation — testing the idea</option>
+        <option value="MVP">MVP — building the first version</option>
+        <option value="Launch">Launch — preparing to go live</option>
+        <option value="Growth">Growth — scaling what works</option>
+        <option value="Optimization">Optimization — improving metrics</option>
+        <option value="Scale">Scale — expanding the platform</option>
+      </select>
+    </div>
+    <div class="field full">
+      <label>The Core Challenge</label>
+      <textarea id="fChallenge" placeholder="Describe the problem you're solving. Be specific — what's broken, missing, or painful right now?"></textarea>
+    </div>
+    <div class="field">
+      <label>Target Audience</label>
+      <input type="text" id="fAudience" placeholder="e.g. Remote design teams at mid-size agencies">
+    </div>
+    <div class="field">
+      <label>Primary Goals</label>
+      <input type="text" id="fGoals" placeholder="e.g. Increase activation rate, reduce churn">
+    </div>
+    <div class="field full">
+      <label>Constraints &amp; Context</label>
+      <textarea id="fConstraints" placeholder="Budget, timeline, tech stack, team size, existing systems, what you've already tried..."></textarea>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 3: ACTIVE SPECIALISTS -->
+<div class="step-section fade-in">
+  <div class="step-label">Step 03</div>
+  <h2>Active Specialists</h2>
+  <p class="step-desc">Pre-selected based on your industry mode. Click to cycle: <strong>off → primary → supporting → off</strong>. Customize freely.</p>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot primary"></div>Primary — highest weight</div>
+    <div class="legend-item"><div class="legend-dot supporting"></div>Supporting — activated</div>
+    <div class="legend-item"><div class="legend-dot off"></div>Off — not included</div>
+  </div>
+  <div class="roles-wrap" id="rolesWrap"></div>
+</div>
+
+<!-- OUTPUT -->
+<div class="output-section fade-in">
+  <div class="output-header">
+    <h2>Generated Prompt</h2>
+    <span class="output-meta" id="outputMeta">Fill in details above</span>
+  </div>
+  <div class="prompt-box">
+    <div class="prompt-box-header">
+      <div class="pdots"><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div></div>
+      <span class="prompt-box-label">Claude Prompt — Studio Mode</span>
+    </div>
+    <div class="prompt-text" id="promptOutput"><span class="prompt-empty">Your prompt will appear here as you fill in the steps above...</span></div>
+    <div class="copy-row">
+      <span class="copy-hint" id="copyHint">Ready to paste into any Claude session</span>
+      <button class="copy-btn" id="copyBtn">Copy Prompt</button>
+    </div>
+  </div>
+</div>
+
+</main>
+
+<button id="backToTop" title="Back to top">
+  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+// ── DATA ──────────────────────────────────
+const MODES = {
+  saas:{
+    label:'SaaS / B2B',context:'Subscription product or B2B platform tool',
+    primary:['product-strategist','growth-consultant','ux-designer','data-analytics','conversion-architect'],
+    supporting:['founder','business-consultant','ui-designer','architect','product-manager','copy-strategist','ux-researcher'],
+  },
+  ecommerce:{
+    label:'E-commerce',context:'Online store, marketplace, or retail experience',
+    primary:['conversion-architect','ui-designer','copy-strategist','brand-strategist','growth-consultant'],
+    supporting:['ux-designer','experience-engineer','frontend-engineer','community-designer','product-manager','ux-researcher'],
+  },
+  mobile:{
+    label:'Mobile App',context:'Native iOS/Android or cross-platform mobile experience',
+    primary:['ux-designer','ux-researcher','ui-designer','experience-engineer','frontend-engineer'],
+    supporting:['product-strategist','motion-designer','growth-consultant','data-analytics','qa-lead','product-manager'],
+  },
+  ai:{
+    label:'AI Product',context:'LLM integration, AI-native tool, or intelligent system',
+    primary:['ai-systems','architect','ux-researcher','data-analytics','innovation-director'],
+    supporting:['product-strategist','ux-designer','copy-strategist','business-consultant','qa-lead','product-manager'],
+  },
+};
+
+const ROLES = [
+  {id:'founder',label:'Founder',cat:'Vision & Strategy'},
+  {id:'product-strategist',label:'Product Strategist',cat:'Vision & Strategy'},
+  {id:'business-consultant',label:'Business Consultant',cat:'Vision & Strategy'},
+  {id:'product-manager',label:'Product Manager',cat:'Vision & Strategy'},
+  {id:'research-analyst',label:'Research Analyst',cat:'Research & Discovery'},
+  {id:'ux-researcher',label:'UX Researcher',cat:'Research & Discovery'},
+  {id:'ux-designer',label:'UX Designer',cat:'Design'},
+  {id:'ui-designer',label:'UI Designer',cat:'Design'},
+  {id:'experience-engineer',label:'Experience Engineer',cat:'Design'},
+  {id:'creative-director',label:'Creative Director',cat:'Design'},
+  {id:'brand-strategist',label:'Brand Strategist',cat:'Design'},
+  {id:'copy-strategist',label:'Copy Strategist',cat:'Craft'},
+  {id:'motion-designer',label:'Motion Designer',cat:'Craft'},
+  {id:'frontend-engineer',label:'Front-End Engineer',cat:'Craft'},
+  {id:'architect',label:'Software Architect',cat:'Technology'},
+  {id:'data-analytics',label:'Data & Analytics',cat:'Technology'},
+  {id:'ai-systems',label:'AI Systems Designer',cat:'Technology'},
+  {id:'growth-consultant',label:'Growth Consultant',cat:'Growth'},
+  {id:'conversion-architect',label:'Conversion Architect',cat:'Growth'},
+  {id:'community-designer',label:'Community Designer',cat:'Growth'},
+  {id:'innovation-director',label:'Innovation Director',cat:'Innovation & QA'},
+  {id:'qa-lead',label:'QA Lead',cat:'Innovation & QA'},
+];
+
+// ── STATE ──────────────────────────────────
+const state = { mode:null, roleStates:{} };
+ROLES.forEach(r => state.roleStates[r.id] = 'off');
+
+// ── RENDER ROLES ───────────────────────────
+function renderRoles() {
+  const wrap = document.getElementById('rolesWrap');
+  const cats = [...new Set(ROLES.map(r=>r.cat))];
+  wrap.innerHTML = cats.map(cat => {
+    const roles = ROLES.filter(r=>r.cat===cat);
+    return `<div><span class="role-cat-label">${cat}</span><div class="chips-row">${
+      roles.map(r=>`<button class="role-chip ${state.roleStates[r.id]}" data-id="${r.id}">${r.label}</button>`).join('')
+    }</div></div>`;
+  }).join('');
+  wrap.querySelectorAll('.role-chip').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const id=btn.dataset.id, cur=state.roleStates[id];
+      state.roleStates[id] = cur==='off'?'primary': cur==='primary'?'supporting':'off';
+      renderRoles(); updatePrompt();
+    });
+  });
+}
+
+// ── MODE SELECT ────────────────────────────
+document.querySelectorAll('.mode-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    document.querySelectorAll('.mode-card').forEach(c=>c.classList.remove('active'));
+    card.classList.add('active');
+    state.mode = card.dataset.mode;
+    const m = MODES[state.mode];
+    ROLES.forEach(r=>{
+      state.roleStates[r.id] = m.primary.includes(r.id)?'primary': m.supporting.includes(r.id)?'supporting':'off';
+    });
+    renderRoles(); updatePrompt();
+  });
+});
+
+// ── FORM LISTENERS ─────────────────────────
+['fName','fStage','fChallenge','fAudience','fGoals','fConstraints'].forEach(id=>{
+  const el=document.getElementById(id);
+  if(el) el.addEventListener('input',updatePrompt);
+});
+
+// ── GENERATE PROMPT ────────────────────────
+function v(id){return(document.getElementById(id)?.value||'').trim()}
+
+function generatePrompt(){
+  const mode = state.mode ? MODES[state.mode] : null;
+  const primary = ROLES.filter(r=>state.roleStates[r.id]==='primary');
+  const supporting = ROLES.filter(r=>state.roleStates[r.id]==='supporting');
+  const name=v('fName'), stage=v('fStage'), challenge=v('fChallenge'),
+        audience=v('fAudience'), goals=v('fGoals'), constraints=v('fConstraints');
+
+  let p = 'You are the Ultimate Agent — an elite multidisciplinary product studio\noperating as a unified team of world-class specialists.\n\nYour mission: transform any digital product challenge into exceptional\noutcomes across strategy, UX, brand, motion, AI systems, growth, and architecture.\n';
+
+  if(mode){
+    p+=`\n━━━ INDUSTRY MODE: ${mode.label.toUpperCase()} ━━━\n`;
+    p+=`Context: ${mode.context}\n`;
+  }
+
+  if(primary.length||supporting.length){
+    p+=`\n━━━ ACTIVE SPECIALISTS ━━━\n`;
+    if(primary.length){
+      p+=`Primary (weight highest):\n`;
+      primary.forEach(r=>p+=`  · ${r.label}\n`);
+    }
+    if(supporting.length){
+      p+=`Supporting:\n`;
+      supporting.forEach(r=>p+=`  · ${r.label}\n`);
+    }
+  }
+
+  if(name||stage||challenge||audience||goals||constraints){
+    p+=`\n━━━ PROJECT BRIEF ━━━\n`;
+    if(name) p+=`Product: ${name}\n`;
+    if(stage) p+=`Stage: ${stage}\n`;
+    if(audience) p+=`Audience: ${audience}\n`;
+    if(challenge) p+=`\nChallenge:\n${challenge}\n`;
+    if(goals) p+=`\nGoals: ${goals}\n`;
+    if(constraints) p+=`\nConstraints & Context:\n${constraints}\n`;
+  }
+
+  p+=`\n━━━ DELIVERABLE ━━━\n`;
+  p+=`Respond in Studio Mode with a complete analysis across all relevant\ndeliverable sections. Lead with the sections that matter most for this\nspecific challenge.\n`;
+  if(primary.length) p+=`\nWeight your recommendations through the lens of your primary specialists:\n${primary.map(r=>r.label).join(', ')}.\n`;
+  p+=`\nEvery recommendation must pass the Quality Gate:\nUseful · Intuitive · Beautiful · Scalable · Performant · Accessible\nMemorable · Delightful · Innovative · Future-ready · Exceptional\n\nIf any answer is not yes, continue improving the solution.`;
+  return p;
+}
+
+function updatePrompt(){
+  const prompt=generatePrompt();
+  const out=document.getElementById('promptOutput');
+  out.innerHTML='';
+  out.appendChild(document.createTextNode(prompt));
+  const words=prompt.split(/\s+/).length;
+  document.getElementById('outputMeta').textContent=`~${Math.round(words*1.35)} tokens · ${words} words`;
+}
+
+// ── COPY ───────────────────────────────────
+document.getElementById('copyBtn').addEventListener('click',()=>{
+  const btn=document.getElementById('copyBtn');
+  navigator.clipboard.writeText(generatePrompt()).then(()=>{
+    btn.textContent='✓ Copied!'; btn.classList.add('copied');
+    document.getElementById('copyHint').textContent='Open Claude and paste — Studio Mode activated';
+    setTimeout(()=>{ btn.textContent='Copy Prompt'; btn.classList.remove('copied'); document.getElementById('copyHint').textContent='Ready to paste into any Claude session'; },2500);
+  });
+});
+
+// ── THEME ──────────────────────────────────
+const root=document.documentElement;
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  const isLight=root.getAttribute('data-theme')==='light';
+  if(isLight){root.removeAttribute('data-theme');localStorage.setItem('html-it-theme','dark');}
+  else{root.setAttribute('data-theme','light');localStorage.setItem('html-it-theme','light');}
+});
+
+// ── BACK TO TOP ────────────────────────────
+const btt=document.getElementById('backToTop');
+window.addEventListener('scroll',()=>btt.classList.toggle('show',window.scrollY>400));
+btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// ── FADE IN ────────────────────────────────
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.08});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+// ── INIT ───────────────────────────────────
+renderRoles();
+updatePrompt();
+
+// ── HERO ANIMATIONS ────────────────────────
+// Word-stagger H1
+(function(){
+  const words = ['Prompt','<em>Studio</em>'];
+  const h1 = document.getElementById('heroTitle');
+  if(!h1) return;
+  h1.innerHTML = words.map((w,i)=>
+    `<span class="word" style="animation-delay:${.28+i*.12}s">${w}</span>`
+  ).join(' ');
+})();
+
+// Count-up stats with cubic ease + pulse
+document.querySelectorAll('.hstat-val').forEach((el,i)=>{
+  const target=+el.dataset.target;
+  setTimeout(()=>{
+    const t0=performance.now(),dur=820;
+    (function tick(now){
+      const p=Math.min((now-t0)/dur,1),e=1-Math.pow(1-p,3);
+      el.textContent=Math.round(target*e);
+      if(p<1) requestAnimationFrame(tick);
+      else el.style.animation='stat-pulse 400ms cubic-bezier(.22,1,.36,1) both';
+    })(performance.now());
+  },820+i*130);
+});
+</script>
+</body>
+</html>
