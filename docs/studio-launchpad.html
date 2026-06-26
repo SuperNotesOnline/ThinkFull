@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prompt Studio — ThinkFull</title>
+<title>Prompt Studio | ThinkFull</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
 <script>if(localStorage.getItem('html-it-theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -287,7 +287,7 @@ main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
       <span>ThinkFull</span>
     </div>
     <h1 class="hero-h1" id="heroTitle"></h1>
-    <p class="hero-sub">Pick an industry mode, describe your challenge, activate your specialists — get a ready-to-paste Studio Mode prompt in seconds.</p>
+    <p class="hero-sub">Pick an industry mode, describe your challenge, activate your specialists and get a ready-to-paste Studio Mode prompt in seconds.</p>
     <div class="hero-stats">
       <div class="hstat"><span class="hstat-val" data-target="4">0</span><span class="hstat-label">Industry Modes</span></div>
       <div class="hstat"><span class="hstat-val" data-target="22">0</span><span class="hstat-label">Specialists</span></div>
@@ -346,7 +346,7 @@ main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
 <div class="step-section fade-in">
   <div class="step-label">Step 02</div>
   <h2>Project Details</h2>
-  <p class="step-desc">Fill in what you know. Every field improves the output — skip anything you don't have yet.</p>
+  <p class="step-desc">Fill in what you know. Every field improves the output. Skip anything you don't have yet.</p>
   <div class="form-grid">
     <div class="field">
       <label>Product / Project Name</label>
@@ -356,17 +356,17 @@ main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
       <label>Current Stage</label>
       <select id="fStage">
         <option value="">Select stage...</option>
-        <option value="Validation">Validation — testing the idea</option>
-        <option value="MVP">MVP — building the first version</option>
-        <option value="Launch">Launch — preparing to go live</option>
-        <option value="Growth">Growth — scaling what works</option>
-        <option value="Optimization">Optimization — improving metrics</option>
-        <option value="Scale">Scale — expanding the platform</option>
+        <option value="Validation">Validation: testing the idea</option>
+        <option value="MVP">MVP: building the first version</option>
+        <option value="Launch">Launch: preparing to go live</option>
+        <option value="Growth">Growth: scaling what works</option>
+        <option value="Optimization">Optimization: improving metrics</option>
+        <option value="Scale">Scale: expanding the platform</option>
       </select>
     </div>
     <div class="field full">
       <label>The Core Challenge</label>
-      <textarea id="fChallenge" placeholder="Describe the problem you're solving. Be specific — what's broken, missing, or painful right now?"></textarea>
+      <textarea id="fChallenge" placeholder="Describe the problem you're solving. Be specific: what's broken, missing, or painful right now?"></textarea>
     </div>
     <div class="field">
       <label>Target Audience</label>
@@ -389,9 +389,9 @@ main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
   <h2>Active Specialists</h2>
   <p class="step-desc">Pre-selected based on your industry mode. Click to cycle: <strong>off → primary → supporting → off</strong>. Customize freely.</p>
   <div class="legend">
-    <div class="legend-item"><div class="legend-dot primary"></div>Primary — highest weight</div>
-    <div class="legend-item"><div class="legend-dot supporting"></div>Supporting — activated</div>
-    <div class="legend-item"><div class="legend-dot off"></div>Off — not included</div>
+    <div class="legend-item"><div class="legend-dot primary"></div>Primary: highest weight</div>
+    <div class="legend-item"><div class="legend-dot supporting"></div>Supporting: activated</div>
+    <div class="legend-item"><div class="legend-dot off"></div>Off: not included</div>
   </div>
   <div class="roles-wrap" id="rolesWrap"></div>
 </div>
@@ -405,7 +405,7 @@ main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
   <div class="prompt-box">
     <div class="prompt-box-header">
       <div class="pdots"><div class="pdot"></div><div class="pdot"></div><div class="pdot"></div></div>
-      <span class="prompt-box-label">Claude Prompt — Studio Mode</span>
+      <span class="prompt-box-label">Claude Prompt: Studio Mode</span>
     </div>
     <div class="prompt-text" id="promptOutput"><span class="prompt-empty">Your prompt will appear here as you fill in the steps above...</span></div>
     <div class="copy-row">
@@ -524,7 +524,7 @@ function generatePrompt(){
   const name=v('fName'), stage=v('fStage'), challenge=v('fChallenge'),
         audience=v('fAudience'), goals=v('fGoals'), constraints=v('fConstraints');
 
-  let p = 'You are ThinkFull — a multidisciplinary thinking studio that specializes\nin digital projects, operating as a unified team of world-class specialists.\n\nYour thinking is broader than any one domain, but your expertise runs deepest\nin strategy, UX, brand, motion, AI systems, growth, and architecture.\n';
+  let p = 'You are ThinkFull, a multidisciplinary thinking studio that specializes\nin digital projects, operating as a unified team of world-class specialists.\n\nYour thinking is broader than any one domain, but your expertise runs deepest\nin strategy, UX, brand, motion, AI systems, growth, and architecture.\n';
 
   if(mode){
     p+=`\n━━━ INDUSTRY MODE: ${mode.label.toUpperCase()} ━━━\n`;
@@ -574,7 +574,7 @@ document.getElementById('copyBtn').addEventListener('click',()=>{
   const btn=document.getElementById('copyBtn');
   navigator.clipboard.writeText(generatePrompt()).then(()=>{
     btn.textContent='✓ Copied!'; btn.classList.add('copied');
-    document.getElementById('copyHint').textContent='Open Claude and paste — Studio Mode activated';
+    document.getElementById('copyHint').textContent='Open Claude and paste. Studio Mode activated.';
     setTimeout(()=>{ btn.textContent='Copy Prompt'; btn.classList.remove('copied'); document.getElementById('copyHint').textContent='Ready to paste into any Claude session'; },2500);
   });
 });
