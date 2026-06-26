@@ -190,6 +190,19 @@ h2{font:700 clamp(28px,3.5vw,44px)/1.1 var(--sans);letter-spacing:-0.03em;color:
 .fade-in.visible{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.fade-in{opacity:1;transform:none;transition:none}}
 
+/* PATH TIPS */
+.paths{padding:0 0 56px}
+.paths-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.path-card{background:var(--surface);border:1.5px solid var(--border);border-radius:14px;padding:28px 28px 24px;transition:border-color 150ms}
+.path-card:hover{border-color:var(--accent)}
+.path-tag{font:600 10px/1 var(--mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:14px;display:block}
+.path-card h3{font:700 17px/1.2 var(--sans);letter-spacing:-0.01em;margin-bottom:10px}
+.path-card p{font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:18px}
+.path-steps{list-style:none;display:flex;flex-direction:column;gap:7px}
+.path-steps li{font-size:12px;color:var(--dim);display:flex;align-items:center;gap:8px}
+.path-steps li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+@media(max-width:640px){.paths-grid{grid-template-columns:1fr}}
+
 /* BACK TO TOP */
 #backToTop{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:9px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);opacity:0;transform:translateY(8px);transition:opacity 200ms,transform 200ms,background 150ms,color 150ms;z-index:99}
 #backToTop.show{opacity:1;transform:none}
@@ -243,6 +256,36 @@ h2{font:700 clamp(28px,3.5vw,44px)/1.1 var(--sans);letter-spacing:-0.03em;color:
       <a href="#get-started" class="btn btn-secondary">Get the Skill →</a>
     </div>
   </div>
+</section>
+
+<!-- PATH TIPS -->
+<section class="paths">
+<div class="wrap">
+  <div class="paths-grid fade-in">
+    <div class="path-card">
+      <span class="path-tag">New here?</span>
+      <h3>Understand the idea first</h3>
+      <p>Read the case for skills, explore the framework, then install when it clicks.</p>
+      <ul class="path-steps">
+        <li>Read this page — skills vs agents</li>
+        <li>Explore the ThinkFull Framework</li>
+        <li>Browse the 22 specialist roles</li>
+        <li>Build your prompt in the Studio</li>
+      </ul>
+    </div>
+    <div class="path-card">
+      <span class="path-tag">Ready to install?</span>
+      <h3>Jump straight to Prompt Studio</h3>
+      <p>Skip the reading. Build your prompt, install the skill, and activate with /thinkfull.</p>
+      <ul class="path-steps">
+        <li>Open Prompt Studio</li>
+        <li>Pick your industry mode</li>
+        <li>Describe your challenge</li>
+        <li>Copy and paste into Claude</li>
+      </ul>
+    </div>
+  </div>
+</div>
 </section>
 
 <!-- THE PROBLEM -->
