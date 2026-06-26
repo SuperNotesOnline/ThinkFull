@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prompt Studio — Ultimate Agent</title>
+<title>Prompt Studio — ThinkFull</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
 <script>if(localStorage.getItem('html-it-theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -243,15 +243,16 @@ main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
 <body>
 
 <nav>
-  <div class="nav-left">
+  <a href="build-skills.html" class="nav-left" style="text-decoration:none">
     <div class="nav-logo">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
     </div>
     <span class="nav-title">Prompt Studio</span>
-  </div>
+  </a>
   <div class="nav-right">
-    <a href="ultimate-agent.html" class="nav-link">Framework</a>
-    <a href="agent-roles.html" class="nav-link">Role Reference</a>
+    <a href="build-skills.html" class="nav-link">Skills Case</a>
+    <a href="thinkfull.html" class="nav-link">Framework</a>
+    <a href="agent-roles.html" class="nav-link">22 Roles</a>
     <button class="theme-toggle" id="themeToggle" title="Toggle theme">
       <svg class="icon-sun" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       <svg class="icon-moon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -283,7 +284,7 @@ main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
   <div class="hero-content">
     <div class="hero-eyebrow">
       <span class="eyebrow-line"></span>
-      <span>Ultimate Agent</span>
+      <span>ThinkFull</span>
     </div>
     <h1 class="hero-h1" id="heroTitle"></h1>
     <p class="hero-sub">Pick an industry mode, describe your challenge, activate your specialists — get a ready-to-paste Studio Mode prompt in seconds.</p>
@@ -523,7 +524,7 @@ function generatePrompt(){
   const name=v('fName'), stage=v('fStage'), challenge=v('fChallenge'),
         audience=v('fAudience'), goals=v('fGoals'), constraints=v('fConstraints');
 
-  let p = 'You are the Ultimate Agent — an elite multidisciplinary product studio\noperating as a unified team of world-class specialists.\n\nYour mission: transform any digital product challenge into exceptional\noutcomes across strategy, UX, brand, motion, AI systems, growth, and architecture.\n';
+  let p = 'You are ThinkFull — a multidisciplinary thinking studio that specializes\nin digital projects, operating as a unified team of world-class specialists.\n\nYour thinking is broader than any one domain, but your expertise runs deepest\nin strategy, UX, brand, motion, AI systems, growth, and architecture.\n';
 
   if(mode){
     p+=`\n━━━ INDUSTRY MODE: ${mode.label.toUpperCase()} ━━━\n`;

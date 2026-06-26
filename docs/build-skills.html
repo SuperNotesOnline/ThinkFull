@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build Skills, Not Agents — ThinkFull</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+<script>if(localStorage.getItem('html-it-theme')==='light')document.documentElement.setAttribute('data-theme','light');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:       #0D0D0C;
+  --surface:  #161614;
+  --s2:       #1F1F1D;
+  --s3:       #272725;
+  --border:   #2E2E2B;
+  --text:     #FFFFFF;
+  --muted:    #D8D5D0;
+  --dim:      #9A9590;
+  --accent:   #D97757;
+  --accent-h: #E8865E;
+  --success:  #8FAF6A;
+  --warn:     #D4A017;
+  --error:    #E05252;
+  --nav-bg:   rgba(13,13,12,0.88);
+  --sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+}
+html[data-theme="light"] {
+  --bg:       #FAF9F5;
+  --surface:  #FFFFFF;
+  --s2:       #F0EEE6;
+  --s3:       #E6E3DA;
+  --border:   #D1CFC5;
+  --text:     #141413;
+  --muted:    #4A4740;
+  --dim:      #87867F;
+  --accent:   #B85C35;
+  --accent-h: #9E4D2A;
+  --nav-bg:   rgba(250,249,245,0.92);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-feature-settings:"cv01","cv02","cv09";line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:var(--accent-h)}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px}
+.nav-logo{width:28px;height:28px;background:var(--accent);border-radius:6px;display:flex;align-items:center;justify-content:center}
+.nav-logo svg{color:#fff}
+.nav-title{font-weight:700;font-size:14px;letter-spacing:-0.02em;color:var(--text)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-pill{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:0.08em;padding:5px 10px;border-radius:100px;background:var(--s2);border:1px solid var(--border);color:var(--dim);transition:color 130ms,border-color 130ms}
+.nav-pill:hover{color:var(--accent);border-color:var(--accent)}
+.theme-toggle{width:32px;height:32px;border-radius:7px;background:transparent;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);transition:background 130ms,color 130ms;flex-shrink:0}
+.theme-toggle:hover{background:var(--s2);color:var(--text)}
+html[data-theme="light"] .icon-moon{display:none}
+html:not([data-theme="light"]) .icon-sun{display:none}
+@media(max-width:860px){.nav-pill{display:none}}
+
+/* LAYOUT */
+.wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+main{padding-top:56px}
+section{padding:80px 0;border-bottom:1px solid var(--border)}
+section:last-child{border-bottom:none}
+@media(max-width:860px){.wrap{padding:0 20px}nav{padding:0 20px}}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:110px 0 96px;text-align:center}
+.hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(217,119,87,0.28) 1px,transparent 1px);background-size:36px 36px;-webkit-mask-image:radial-gradient(ellipse 75% 95% at 50% 38%,black 15%,transparent 78%);mask-image:radial-gradient(ellipse 75% 95% at 50% 38%,black 15%,transparent 78%);opacity:0.38}
+.hero-gridlines{position:absolute;inset:0;background-image:linear-gradient(rgba(217,119,87,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(217,119,87,0.03) 1px,transparent 1px);background-size:80px 80px}
+.hero-orb-center{position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:960px;height:720px;background:radial-gradient(ellipse,rgba(217,119,87,0.15) 0%,rgba(217,119,87,0.04) 42%,transparent 68%);animation:orb-pulse 8s ease-in-out infinite}
+.hero-orb-left{position:absolute;top:-60px;left:-18%;width:560px;height:480px;background:radial-gradient(ellipse,rgba(80,100,230,0.06) 0%,transparent 70%);animation:orb-float 12s ease-in-out infinite}
+.hero-orb-right{position:absolute;top:-40px;right:-18%;width:520px;height:460px;background:radial-gradient(ellipse,rgba(140,60,210,0.05) 0%,transparent 70%);animation:orb-float 14s ease-in-out infinite reverse}
+@keyframes orb-pulse{0%,100%{transform:translateX(-50%) scale(1);opacity:1}50%{transform:translateX(-50%) scale(1.13);opacity:0.82}}
+@keyframes orb-float{0%,100%{transform:translate(0,0)}50%{transform:translate(28px,18px)}}
+@media(prefers-reduced-motion:reduce){.hero-orb-center,.hero-orb-left,.hero-orb-right{animation:none}}
+.hero-inner{position:relative;z-index:2}
+.eyebrow{font:600 11px/1 var(--mono);letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;align-items:center;justify-content:center;gap:10px}
+.eyebrow::before,.eyebrow::after{content:'';display:inline-block;width:32px;height:1.5px;background:var(--accent);opacity:0.6}
+
+/* MANIFESTO HEADLINE */
+.manifesto-h1{font:800 clamp(52px,9vw,112px)/0.95 var(--sans);letter-spacing:-0.04em;text-align:center;margin-bottom:32px}
+.manifesto-h1 .line-skills{display:block;color:var(--text)}
+.manifesto-h1 .line-not{display:block;color:var(--muted);font-size:0.62em;letter-spacing:-0.02em;margin-top:8px}
+.manifesto-h1 .line-not .word-agents{color:var(--dim);text-decoration:line-through;text-decoration-color:var(--accent);text-decoration-thickness:3px}
+.hero-sub{font-size:18px;line-height:1.65;color:var(--muted);max-width:540px;margin:0 auto 48px}
+
+/* CTA BUTTONS */
+.cta-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 13px/1 var(--sans);padding:13px 22px;border-radius:9px;transition:all 150ms;cursor:pointer;border:none;text-decoration:none}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-h);color:#fff;transform:translateY(-1px)}
+.btn-secondary{background:var(--s2);color:var(--text);border:1px solid var(--border)}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px)}
+
+/* SECTION HEADERS */
+.section-eyebrow{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.section-eyebrow::before{content:'';display:inline-block;width:20px;height:1.5px;background:var(--accent)}
+h2{font:700 clamp(28px,3.5vw,44px)/1.1 var(--sans);letter-spacing:-0.03em;color:var(--text);margin-bottom:12px}
+.section-sub{font-size:16px;color:var(--muted);line-height:1.6;margin-bottom:56px}
+
+/* PAIN CARDS */
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.pain-card{background:var(--surface);padding:32px 28px;position:relative;overflow:hidden}
+.pain-card:first-child{border-radius:10px 0 0 10px}
+.pain-card:last-child{border-radius:0 10px 10px 0}
+.pain-num{font:700 10px/1 var(--mono);text-transform:uppercase;letter-spacing:0.12em;color:var(--error);opacity:0.7;margin-bottom:16px}
+.pain-card h3{font:700 17px/1.2 var(--sans);letter-spacing:-0.01em;color:var(--text);margin-bottom:10px}
+.pain-card p{font-size:14px;line-height:1.65;color:var(--muted)}
+.pain-stripe{position:absolute;bottom:0;left:0;right:0;height:3px;background:rgba(224,82,82,0.25)}
+@media(max-width:760px){.pain-grid{grid-template-columns:1fr}.pain-card:first-child,.pain-card:last-child{border-radius:0}.pain-card:first-child{border-radius:10px 10px 0 0}.pain-card:last-child{border-radius:0 0 10px 10px}}
+
+/* WHAT IS A SKILL */
+.skill-split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.skill-def{display:flex;flex-direction:column;gap:20px}
+.skill-point{display:flex;gap:16px;align-items:flex-start}
+.skill-point-icon{width:36px;height:36px;border-radius:8px;background:rgba(217,119,87,0.1);border:1px solid rgba(217,119,87,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--accent)}
+.skill-point-body h4{font:700 14px/1.3 var(--sans);color:var(--text);margin-bottom:4px}
+.skill-point-body p{font-size:13px;line-height:1.6;color:var(--muted)}
+.code-block{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.code-block-header{display:flex;align-items:center;justify-content:space-between;padding:12px 18px;border-bottom:1px solid var(--border)}
+.code-block-title{font:500 12px/1 var(--mono);color:var(--dim)}
+.code-dots{display:flex;gap:6px}
+.code-dot{width:10px;height:10px;border-radius:50%}
+.code-dot:nth-child(1){background:#E05252;opacity:0.6}
+.code-dot:nth-child(2){background:#D4A017;opacity:0.6}
+.code-dot:nth-child(3){background:#8FAF6A;opacity:0.6}
+.code-block pre{padding:22px 20px;overflow-x:auto}
+.code-block code{font:13px/1.75 var(--mono);color:#E8E5DF}
+.code-k{color:#D97757}
+.code-s{color:#8FAF6A}
+.code-c{color:#6A9CB5}
+.code-m{color:#C2A0D8}
+@media(max-width:800px){.skill-split{grid-template-columns:1fr}}
+
+/* COMPARISON TABLE */
+.compare-wrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.compare-table{width:100%;border-collapse:collapse;font-size:14px}
+.compare-table th{font:600 11px/1 var(--mono);text-transform:uppercase;letter-spacing:0.1em;padding:16px 20px;border-bottom:2px solid var(--border);text-align:left;color:var(--dim)}
+.compare-table th:nth-child(2){color:var(--error);opacity:0.8}
+.compare-table th:nth-child(3){color:var(--success)}
+.compare-table td{padding:16px 20px;border-bottom:1px solid var(--border);color:var(--muted);vertical-align:top}
+.compare-table td:first-child{font-weight:600;color:var(--text);font-size:13px}
+.compare-table tr:last-child td{border-bottom:none}
+.compare-table tr:hover td{background:var(--s2)}
+.compare-table .bad{color:var(--error);opacity:0.8}
+.compare-table .good{color:var(--success);font-weight:600}
+
+/* PROOF SECTION */
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-bottom:40px}
+.proof-stat{background:var(--surface);padding:28px 24px;text-align:center}
+.proof-stat:first-child{border-radius:10px 0 0 10px}
+.proof-stat:last-child{border-radius:0 10px 10px 0}
+.proof-val{display:block;font:800 clamp(30px,4vw,48px)/1 var(--sans);letter-spacing:-0.04em;color:var(--accent);margin-bottom:6px}
+.proof-label{font:500 11px/1 var(--mono);text-transform:uppercase;letter-spacing:0.08em;color:var(--dim)}
+@media(max-width:640px){.proof-grid{grid-template-columns:1fr 1fr}.proof-stat:first-child{border-radius:10px 0 0 0}.proof-stat:nth-child(2){border-radius:0 10px 0 0}.proof-stat:last-child{grid-column:span 2;border-radius:0 0 10px 10px}}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.step{display:flex;flex-direction:column;gap:14px}
+.step-num{font:700 11px/1 var(--mono);text-transform:uppercase;letter-spacing:0.1em;color:var(--accent);display:flex;align-items:center;gap:10px}
+.step-num::after{content:'';flex:1;height:1px;background:var(--border)}
+.step h3{font:700 16px/1.2 var(--sans);letter-spacing:-0.01em;color:var(--text)}
+.step p{font-size:14px;line-height:1.65;color:var(--muted)}
+.step-code{font:600 13px/1 var(--mono);color:var(--accent);background:rgba(217,119,87,0.1);border:1px solid rgba(217,119,87,0.2);padding:8px 14px;border-radius:6px;display:inline-block;margin-top:4px}
+@media(max-width:760px){.steps{grid-template-columns:1fr}}
+
+/* MANIFESTO BLOCK */
+.manifesto-block{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:48px;text-align:center;position:relative;overflow:hidden}
+.manifesto-block::before{content:'';position:absolute;top:-80px;left:50%;transform:translateX(-50%);width:600px;height:400px;background:radial-gradient(ellipse,rgba(217,119,87,0.1) 0%,transparent 65%);pointer-events:none}
+.manifesto-block-text{font:700 clamp(22px,3vw,34px)/1.2 var(--sans);letter-spacing:-0.025em;color:var(--text);max-width:680px;margin:0 auto 32px;position:relative;z-index:1}
+.manifesto-block-text em{font-style:italic;color:var(--accent)}
+@media(max-width:640px){.manifesto-block{padding:32px 24px}}
+
+/* FINAL CTA */
+.final-cta{text-align:center;padding:96px 0}
+.final-h{font:800 clamp(36px,5vw,64px)/1.05 var(--sans);letter-spacing:-0.04em;color:var(--text);margin-bottom:16px}
+.final-h em{font-style:italic;color:var(--accent)}
+.final-sub{font-size:17px;color:var(--muted);margin-bottom:40px}
+
+/* FADE IN */
+.fade-in{opacity:0;transform:translateY(16px);transition:opacity 200ms ease,transform 200ms ease}
+.fade-in.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.fade-in{opacity:1;transform:none;transition:none}}
+
+/* BACK TO TOP */
+#backToTop{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:9px;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);opacity:0;transform:translateY(8px);transition:opacity 200ms,transform 200ms,background 150ms,color 150ms;z-index:99}
+#backToTop.show{opacity:1;transform:none}
+#backToTop:hover{background:var(--s2);color:var(--text)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="build-skills.html" class="nav-brand" style="text-decoration:none">
+    <div class="nav-logo">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    </div>
+    <span class="nav-title">ThinkFull</span>
+  </a>
+  <div class="nav-right">
+    <a href="thinkfull.html" class="nav-pill">Framework</a>
+    <a href="agent-roles.html" class="nav-pill">22 Roles</a>
+    <a href="studio-launchpad.html" class="nav-pill" style="background:var(--accent);color:#fff;border-color:var(--accent);opacity:1" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">Prompt Studio ⚡</a>
+    <button class="theme-toggle" id="themeToggle" title="Toggle light/dark mode">
+      <svg class="icon-sun" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-gridlines"></div>
+    <div class="hero-dots"></div>
+    <div class="hero-orb-center"></div>
+    <div class="hero-orb-left"></div>
+    <div class="hero-orb-right"></div>
+  </div>
+  <div class="wrap hero-inner fade-in">
+    <div class="eyebrow">The Case for Skills</div>
+    <h1 class="manifesto-h1">
+      <span class="line-skills">Build Skills,</span>
+      <span class="line-not">Not <span class="word-agents">Agents.</span></span>
+    </h1>
+    <p class="hero-sub">The AI world is excited about complexity. Pipelines, orchestrators, tool chains, vector databases. Skills are a lighter, faster alternative worth knowing about.</p>
+    <div class="cta-row">
+      <a href="thinkfull.html" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        See the Framework
+      </a>
+      <a href="#get-started" class="btn btn-secondary">Get the Skill →</a>
+    </div>
+  </div>
+</section>
+
+<!-- THE PROBLEM -->
+<section>
+<div class="wrap">
+  <div class="section-eyebrow">Worth Considering</div>
+  <h2>Agents have tradeoffs.</h2>
+  <p class="section-sub">Agents are powerful. But for many use cases, the complexity they bring is optional.</p>
+  <div class="pain-grid fade-in">
+    <div class="pain-card">
+      <div class="pain-num">Tradeoff 01</div>
+      <h3>Infrastructure Overhead</h3>
+      <p>Complex agents often require servers, APIs, orchestration layers, and deployment pipelines. For some use cases, that investment pays off. For others, it is more than the problem needs.</p>
+      <div class="pain-stripe"></div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-num">Tradeoff 02</div>
+      <h3>Maintenance Burden</h3>
+      <p>Multi-step pipelines have more moving parts to maintain. Model updates, rate limits, schema changes — each one is a potential point of friction in a more complex system.</p>
+      <div class="pain-stripe"></div>
+    </div>
+    <div class="pain-card">
+      <div class="pain-num">Tradeoff 03</div>
+      <h3>Time to Value</h3>
+      <p>Agent systems take time to design, build, and stabilize. If you are exploring or iterating quickly, that ramp-up can slow you down before you find product-market fit.</p>
+      <div class="pain-stripe"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- WHAT IS A SKILL -->
+<section>
+<div class="wrap">
+  <div class="section-eyebrow">Another Option</div>
+  <h2>A skill is just a file.</h2>
+  <p class="section-sub">A markdown file that teaches Claude exactly how to think, respond, and operate. No infrastructure. No deployment. Instant activation.</p>
+  <div class="skill-split fade-in">
+    <div class="skill-def">
+      <div class="skill-point">
+        <div class="skill-point-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <div class="skill-point-body">
+          <h4>One file, any machine</h4>
+          <p>Drop SKILL.md into your Claude Code skills folder. It works everywhere Claude Code is installed — no setup required.</p>
+        </div>
+      </div>
+      <div class="skill-point">
+        <div class="skill-point-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        </div>
+        <div class="skill-point-body">
+          <h4>One command to activate</h4>
+          <p>Type a slash command and the full framework is live. No API calls, no pipeline warmup, no latency.</p>
+        </div>
+      </div>
+      <div class="skill-point">
+        <div class="skill-point-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="skill-point-body">
+          <h4>Share with one link</h4>
+          <p>A skill is a file in a repo. Anyone on your team clones it and has the same capability immediately.</p>
+        </div>
+      </div>
+      <div class="skill-point">
+        <div class="skill-point-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <div class="skill-point-body">
+          <h4>Zero maintenance</h4>
+          <p>Nothing to update, redeploy, or monitor. The skill evolves when you edit the file. That is all.</p>
+        </div>
+      </div>
+    </div>
+    <div class="code-block">
+      <div class="code-block-header">
+        <div class="code-dots"><div class="code-dot"></div><div class="code-dot"></div><div class="code-dot"></div></div>
+        <span class="code-block-title">SKILL.md</span>
+      </div>
+      <pre><code><span class="code-k">---</span>
+<span class="code-c">name</span><span class="code-k">:</span> <span class="code-s">thinkfull</span>
+<span class="code-c">description</span><span class="code-k">:</span> <span class="code-s">Activates the full</span>
+<span class="code-s">  multidisciplinary product</span>
+<span class="code-s">  studio framework.</span>
+<span class="code-k">---</span>
+
+<span class="code-m"># ThinkFull</span>
+
+You are an elite multidisciplinary
+thinking studio operating as a unified
+team of world-class specialists.
+
+<span class="code-m">## Core Identity</span>
+
+Operate simultaneously as:
+
+- Founder
+- Product Strategist
+- UX Designer
+- Brand Strategist
+- Software Architect
+- Growth Consultant
+- <span class="code-s">...19 more specialists</span>
+
+<span class="code-m">## Quality Gate</span>
+
+Every recommendation must pass:
+Is it useful? Is it beautiful?
+Is it scalable? Is it innovative?
+Is it exceptional?</code></pre>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- COMPARISON -->
+<section>
+<div class="wrap">
+  <div class="section-eyebrow">Side by Side</div>
+  <h2>Skills vs. Agents</h2>
+  <p class="section-sub">Two different tools for two different situations. Skills shine when speed, simplicity, and portability matter most.</p>
+  <div class="compare-wrap fade-in">
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th>Agent Pipelines</th>
+          <th>Skills</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Setup time</td>
+          <td class="bad">Days to weeks</td>
+          <td class="good">30 seconds</td>
+        </tr>
+        <tr>
+          <td>Infrastructure required</td>
+          <td class="bad">Servers, APIs, databases</td>
+          <td class="good">None</td>
+        </tr>
+        <tr>
+          <td>Maintenance burden</td>
+          <td class="bad">Ongoing — updates break things</td>
+          <td class="good">Zero</td>
+        </tr>
+        <tr>
+          <td>Portability</td>
+          <td class="bad">Framework-locked</td>
+          <td class="good">Any Claude Code install</td>
+        </tr>
+        <tr>
+          <td>Activation</td>
+          <td class="bad">Complex orchestration</td>
+          <td class="good">One slash command</td>
+        </tr>
+        <tr>
+          <td>Sharing</td>
+          <td class="bad">Deployment required</td>
+          <td class="good">One GitHub link</td>
+        </tr>
+        <tr>
+          <td>Debugging</td>
+          <td class="bad">Distributed system tracing</td>
+          <td class="good">Read the file</td>
+        </tr>
+        <tr>
+          <td>Cost</td>
+          <td class="bad">Compute + API + hosting</td>
+          <td class="good">Free</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- PROOF -->
+<section>
+<div class="wrap">
+  <div class="section-eyebrow">Proof of Concept</div>
+  <h2>ThinkFull.</h2>
+  <p class="section-sub">One SKILL.md file. A complete multidisciplinary thinking studio that specializes in digital projects, activated instantly.</p>
+  <div class="proof-grid fade-in">
+    <div class="proof-stat"><span class="proof-val">22</span><span class="proof-label">Specialist Roles</span></div>
+    <div class="proof-stat"><span class="proof-val">18</span><span class="proof-label">Deliverable Sections</span></div>
+    <div class="proof-stat"><span class="proof-val">0</span><span class="proof-label">Infrastructure Required</span></div>
+  </div>
+  <div class="manifesto-block fade-in">
+    <p class="manifesto-block-text">Every time you type <em>/thinkfull</em>, a Founder, Product Strategist, UX Designer, Brand Strategist, Software Architect, Growth Consultant, and 16 other specialists activate simultaneously — inside a single markdown file.</p>
+    <div class="cta-row">
+      <a href="thinkfull.html" class="btn btn-secondary">Read the Framework</a>
+      <a href="agent-roles.html" class="btn btn-secondary">Explore the 22 Roles</a>
+      <a href="studio-launchpad.html" class="btn btn-secondary">Open Prompt Studio ⚡</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- GET STARTED -->
+<section id="get-started">
+<div class="wrap">
+  <div class="section-eyebrow">Get Started</div>
+  <h2>Up and running in 3 steps.</h2>
+  <p class="section-sub">No environment setup. No accounts. No configuration.</p>
+  <div class="steps fade-in">
+    <div class="step">
+      <div class="step-num">Step 01</div>
+      <h3>Install Claude Code</h3>
+      <p>Claude Code is Anthropic's official CLI. Install it once and it works across every project on your machine.</p>
+      <span class="step-code">npm i -g @anthropic-ai/claude-code</span>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 02</div>
+      <h3>Clone the Skill</h3>
+      <p>Copy the SKILL.md file into your Claude Code skills folder. That is the entire installation process.</p>
+      <span class="step-code">~/.claude/skills/thinkfull/</span>
+    </div>
+    <div class="step">
+      <div class="step-num">Step 03</div>
+      <h3>Activate</h3>
+      <p>Open any project in Claude Code. Type the slash command. Your full thinking studio is live.</p>
+      <span class="step-code">/thinkfull</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+<div class="wrap">
+  <p class="final-h">Sometimes a skill<br>is <em>all you need.</em></p>
+  <p class="final-sub">One file. World-class output. No infrastructure required.</p>
+  <div class="cta-row">
+    <a href="thinkfull.html" class="btn btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Explore the Framework
+    </a>
+    <a href="studio-launchpad.html" class="btn btn-secondary">Build a Prompt ⚡</a>
+  </div>
+</div>
+</section>
+
+</main>
+
+<button id="backToTop" title="Back to top">
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+// Theme toggle
+const toggle = document.getElementById('themeToggle');
+toggle.addEventListener('click', () => {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  document.documentElement.setAttribute('data-theme', isLight ? '' : 'light');
+  localStorage.setItem('html-it-theme', isLight ? '' : 'light');
+});
+
+// Fade-in on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }});
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// Back to top
+const btt = document.getElementById('backToTop');
+window.addEventListener('scroll', () => btt.classList.toggle('show', window.scrollY > 400));
+btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
