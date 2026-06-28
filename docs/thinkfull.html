@@ -229,7 +229,6 @@ h2{font:700 clamp(28px,3.5vw,40px)/1.1 var(--sans);letter-spacing:-0.025em;color
   .mode-card:last-child{border-radius:0 0 10px 10px}
   h1{letter-spacing:-0.03em}
   .nav-pill{display:none}
-  .hamburger{display:flex}
 }
 .hamburger{display:none;width:36px;height:36px;background:transparent;border:1px solid var(--border);border-radius:7px;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);flex-shrink:0;transition:background 130ms,color 130ms}
 .hamburger:hover{background:var(--s2);color:var(--text)}
@@ -238,6 +237,7 @@ h2{font:700 clamp(28px,3.5vw,40px)/1.1 var(--sans);letter-spacing:-0.025em;color
 .m-link{display:block;padding:11px 14px;border-radius:8px;font:500 14px/1 var(--sans);color:var(--muted);text-decoration:none;transition:background 130ms,color 130ms}
 .m-link:hover{background:var(--s2);color:var(--text)}
 .m-link.m-cta{background:rgba(217,119,87,0.1);color:var(--accent);border:1px solid rgba(217,119,87,0.2);margin-top:4px}
+@media(max-width:860px){.hamburger{display:flex}}
 @media(max-width:540px){
   .stats-row{grid-template-columns:1fr 1fr}
   .hero{padding:72px 0 60px}

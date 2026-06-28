@@ -236,7 +236,7 @@ main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
 .fade-in{opacity:0;transform:translateY(12px);transition:opacity 160ms ease,transform 160ms ease}
 .fade-in.visible{opacity:1;transform:none}
 
-@media(max-width:860px){.nav-link{display:none}.hamburger{display:flex}}
+@media(max-width:860px){.nav-link{display:none}}
 .hamburger{display:none;width:36px;height:36px;background:transparent;border:1px solid var(--border);border-radius:7px;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);flex-shrink:0;transition:background 130ms,color 130ms}
 .hamburger:hover{background:var(--s2);color:var(--text)}
 .mobile-menu{display:none;position:fixed;top:52px;left:0;right:0;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 20px 16px;flex-direction:column;gap:4px;z-index:99}
@@ -244,6 +244,7 @@ main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
 .m-link{display:block;padding:11px 14px;border-radius:8px;font:500 14px/1 var(--sans);color:var(--muted);text-decoration:none;transition:background 130ms,color 130ms}
 .m-link:hover{background:var(--s2);color:var(--text)}
 .m-link.m-cta{background:rgba(217,119,87,0.1);color:var(--accent);border:1px solid rgba(217,119,87,0.2);margin-top:4px}
+@media(max-width:860px){.hamburger{display:flex}}
 @media(max-width:600px){.page-hero,.step-section,.output-section{padding-left:20px;padding-right:20px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.fade-in{opacity:1;transform:none}}
 </style>
