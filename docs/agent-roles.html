@@ -203,12 +203,22 @@ html:not([data-theme="light"]) .icon-sun{display:none}
 .cat-section{scroll-margin-top:52px}
 
 /* ── MOBILE ── */
+.hamburger{display:none;width:36px;height:36px;background:transparent;border:1px solid var(--border);border-radius:7px;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);flex-shrink:0;transition:background 130ms,color 130ms}
+.hamburger:hover{background:var(--s2);color:var(--text)}
+.mobile-menu{display:none;position:fixed;top:52px;left:0;right:0;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 20px 16px;flex-direction:column;gap:4px;z-index:199}
+.mobile-menu.open{display:flex}
+.m-link{display:block;padding:11px 14px;border-radius:8px;font:500 14px/1 var(--sans);color:var(--muted);text-decoration:none;transition:background 130ms,color 130ms}
+.m-link:hover{background:var(--s2);color:var(--text)}
+.m-link.m-cta{background:rgba(217,119,87,0.1);color:var(--accent);border:1px solid rgba(217,119,87,0.2);margin-top:4px}
+@media(max-width:860px){
+  .nav-sub,.nav-count{display:none}
+  .hamburger{display:flex}
+}
 @media(max-width:768px){
   .sidebar{display:none}
   .main{margin-left:0}
   .hero,.role-card,.cat-header{padding-left:20px;padding-right:20px}
   .cat-header{top:52px}
-  .nav-sub,.nav-count{display:none}
 }
 </style>
 </head>
@@ -225,12 +235,20 @@ html:not([data-theme="light"]) .icon-sun{display:none}
     <a href="thinkfull.html" class="nav-count" style="text-decoration:none;cursor:pointer;transition:color 130ms,border-color 130ms" onmouseover="this.style.color='var(--accent)';this.style.borderColor='var(--accent)'" onmouseout="this.style.color='';this.style.borderColor=''">Framework</a>
     <span class="nav-count">22 Roles</span>
     <a href="studio-launchpad.html" class="nav-count" style="text-decoration:none;cursor:pointer;background:var(--accent);color:#fff;border-color:var(--accent);transition:opacity 130ms" onmouseover="this.style.opacity='0.88'" onmouseout="this.style.opacity='1'">Prompt Studio ⚡</a>
+    <button class="hamburger" id="menuBtn" aria-label="Menu">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <button class="theme-toggle" id="themeToggle" title="Toggle theme">
       <svg class="icon-sun" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       <svg class="icon-moon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="build-skills.html" class="m-link">Skills Case</a>
+  <a href="thinkfull.html" class="m-link">Framework</a>
+  <a href="studio-launchpad.html" class="m-link m-cta">Prompt Studio ⚡</a>
+</div>
 
 <div class="layout">
 
@@ -1534,6 +1552,14 @@ document.querySelectorAll('.hstat-val').forEach((el, i) => {
       else el.style.animation = 'stat-pulse 380ms cubic-bezier(.22,1,.36,1) both';
     })(performance.now());
   }, 750 + i * 120);
+});
+
+// Mobile menu
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+document.addEventListener('click', e => {
+  if (!menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) mobileMenu.classList.remove('open');
 });
 
 // Theme toggle

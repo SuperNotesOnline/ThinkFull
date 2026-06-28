@@ -236,6 +236,14 @@ main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
 .fade-in{opacity:0;transform:translateY(12px);transition:opacity 160ms ease,transform 160ms ease}
 .fade-in.visible{opacity:1;transform:none}
 
+@media(max-width:860px){.nav-link{display:none}.hamburger{display:flex}}
+.hamburger{display:none;width:36px;height:36px;background:transparent;border:1px solid var(--border);border-radius:7px;align-items:center;justify-content:center;cursor:pointer;color:var(--dim);flex-shrink:0;transition:background 130ms,color 130ms}
+.hamburger:hover{background:var(--s2);color:var(--text)}
+.mobile-menu{display:none;position:fixed;top:52px;left:0;right:0;background:var(--nav-bg);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:12px 20px 16px;flex-direction:column;gap:4px;z-index:99}
+.mobile-menu.open{display:flex}
+.m-link{display:block;padding:11px 14px;border-radius:8px;font:500 14px/1 var(--sans);color:var(--muted);text-decoration:none;transition:background 130ms,color 130ms}
+.m-link:hover{background:var(--s2);color:var(--text)}
+.m-link.m-cta{background:rgba(217,119,87,0.1);color:var(--accent);border:1px solid rgba(217,119,87,0.2);margin-top:4px}
 @media(max-width:600px){.page-hero,.step-section,.output-section{padding-left:20px;padding-right:20px}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}.fade-in{opacity:1;transform:none}}
 </style>
@@ -250,12 +258,20 @@ main{padding-top:52px;max-width:920px;margin:0 auto;padding-bottom:100px}
     <a href="build-skills.html" class="nav-link">Skills Case</a>
     <a href="thinkfull.html" class="nav-link">Framework</a>
     <a href="agent-roles.html" class="nav-link">22 Roles</a>
+    <button class="hamburger" id="menuBtn" aria-label="Menu">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <button class="theme-toggle" id="themeToggle" title="Toggle theme">
       <svg class="icon-sun" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
       <svg class="icon-moon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
     </button>
   </div>
 </nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="build-skills.html" class="m-link">Skills Case</a>
+  <a href="thinkfull.html" class="m-link">Framework</a>
+  <a href="agent-roles.html" class="m-link">22 Roles</a>
+</div>
 
 <main>
 
@@ -574,6 +590,14 @@ document.getElementById('copyBtn').addEventListener('click',()=>{
     document.getElementById('copyHint').textContent='Open Claude and paste. Studio Mode activated.';
     setTimeout(()=>{ btn.textContent='Copy Prompt'; btn.classList.remove('copied'); document.getElementById('copyHint').textContent='Ready to paste into any Claude session'; },2500);
   });
+});
+
+// ── MOBILE MENU ────────────────────────────
+const menuBtn=document.getElementById('menuBtn');
+const mobileMenu=document.getElementById('mobileMenu');
+menuBtn.addEventListener('click',()=>mobileMenu.classList.toggle('open'));
+document.addEventListener('click',e=>{
+  if(!menuBtn.contains(e.target)&&!mobileMenu.contains(e.target)) mobileMenu.classList.remove('open');
 });
 
 // ── THEME ──────────────────────────────────
