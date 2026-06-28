@@ -5,16 +5,7 @@
 
 ---
 
-<table>
-<tr>
-<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/build-skills.html"><img src="docs/images/hero-build-skills.png" alt="The Case for Skills"></a></td>
-<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/thinkfull.html"><img src="docs/images/hero-thinkfull.png" alt="The ThinkFull Framework"></a></td>
-</tr>
-<tr>
-<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/agent-roles.html"><img src="docs/images/hero-roles.png" alt="22 Specialist Roles"></a></td>
-<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/studio-launchpad.html"><img src="docs/images/hero-studio.png" alt="Prompt Studio"></a></td>
-</tr>
-</table>
+![ThinkFull — Four Tools](docs/images/preview.svg)
 
 ---
 
