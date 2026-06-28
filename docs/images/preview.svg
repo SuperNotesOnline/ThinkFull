@@ -12,183 +12,191 @@
   <!-- ══════════════════════════════════════════════
        WINDOW 1 — Build Skills
   ══════════════════════════════════════════════ -->
-  <rect x="20" y="20" width="572" height="287" rx="10" fill="#0C0C0A" stroke="#252523" stroke-width="1"/>
-  <!-- Chrome bar -->
-  <rect x="20" y="20" width="572" height="34" rx="10" fill="#1C1C1A"/>
-  <rect x="20" y="40" width="572" height="14" fill="#1C1C1A"/>
-  <circle cx="42" cy="37" r="5" fill="#FF5F57"/><circle cx="58" cy="37" r="5" fill="#FEBC2E"/><circle cx="74" cy="37" r="5" fill="#28C840"/>
-  <rect x="118" y="29" width="356" height="16" rx="4" fill="#2A2A28"/>
-  <text x="296" y="41" font-size="8" fill="#555552" text-anchor="middle">supernotesonline.github.io/ThinkFull/build-skills</text>
-  <!-- Nav -->
-  <rect x="20" y="54" width="572" height="38" fill="#111110" clip-path="url(#c1)"/>
-  <text x="36" y="77" font-size="11" fill="#D97757" font-weight="800">Tf</text>
-  <rect x="406" y="67" width="46" height="10" rx="2" fill="#252523"/>
-  <rect x="460" y="67" width="36" height="10" rx="2" fill="#252523"/>
-  <rect x="504" y="64" width="72" height="16" rx="4" fill="#D97757"/>
-  <!-- Hero bg -->
-  <rect x="20" y="92" width="572" height="215" fill="#0C0C0A" clip-path="url(#c1)"/>
-  <!-- Eyebrow -->
-  <text x="86" y="122" font-size="7.5" fill="#D97757" font-weight="600" letter-spacing="2.5">THE CASE FOR SKILLS</text>
-  <!-- Heading -->
-  <text x="86" y="155" font-size="33" fill="#EAE6DE" font-weight="800" letter-spacing="-1">Build Skills,</text>
-  <text x="86" y="192" font-size="33" fill="#D97757" font-weight="800" letter-spacing="-1">Not Agents.</text>
-  <!-- Subtext lines -->
-  <rect x="86" y="206" width="310" height="6" rx="3" fill="#2E2E2B"/>
-  <rect x="86" y="218" width="270" height="6" rx="3" fill="#2E2E2B"/>
-  <rect x="86" y="230" width="240" height="6" rx="3" fill="#2E2E2B"/>
-  <!-- CTAs -->
-  <rect x="86" y="250" width="118" height="28" rx="5" fill="#D97757"/>
-  <text x="145" y="268" font-size="8" fill="#fff" font-weight="700" text-anchor="middle">See the Framework</text>
-  <rect x="214" y="250" width="100" height="28" rx="5" fill="#252523"/>
-  <text x="264" y="268" font-size="8" fill="#C2BEB7" font-weight="600" text-anchor="middle">Get the Skill</text>
+  <a href="https://supernotesonline.github.io/ThinkFull/build-skills.html" target="_blank">
+    <rect x="20" y="20" width="572" height="287" rx="10" fill="#0C0C0A" stroke="#252523" stroke-width="1"/>
+    <!-- Chrome bar -->
+    <rect x="20" y="20" width="572" height="34" rx="10" fill="#1C1C1A"/>
+    <rect x="20" y="40" width="572" height="14" fill="#1C1C1A"/>
+    <circle cx="42" cy="37" r="5" fill="#FF5F57"/><circle cx="58" cy="37" r="5" fill="#FEBC2E"/><circle cx="74" cy="37" r="5" fill="#28C840"/>
+    <rect x="118" y="29" width="356" height="16" rx="4" fill="#2A2A28"/>
+    <text x="296" y="41" font-size="8" fill="#555552" text-anchor="middle">supernotesonline.github.io/ThinkFull/build-skills</text>
+    <!-- Nav -->
+    <rect x="20" y="54" width="572" height="38" fill="#111110" clip-path="url(#c1)"/>
+    <text x="36" y="77" font-size="11" fill="#D97757" font-weight="800">Tf</text>
+    <rect x="406" y="67" width="46" height="10" rx="2" fill="#252523"/>
+    <rect x="460" y="67" width="36" height="10" rx="2" fill="#252523"/>
+    <rect x="504" y="64" width="72" height="16" rx="4" fill="#D97757"/>
+    <!-- Hero bg -->
+    <rect x="20" y="92" width="572" height="215" fill="#0C0C0A" clip-path="url(#c1)"/>
+    <!-- Eyebrow -->
+    <text x="86" y="122" font-size="7.5" fill="#D97757" font-weight="600" letter-spacing="2.5">THE CASE FOR SKILLS</text>
+    <!-- Heading -->
+    <text x="86" y="155" font-size="33" fill="#EAE6DE" font-weight="800" letter-spacing="-1">Build Skills,</text>
+    <text x="86" y="192" font-size="33" fill="#D97757" font-weight="800" letter-spacing="-1">Not Agents.</text>
+    <!-- Subtext lines -->
+    <rect x="86" y="206" width="310" height="6" rx="3" fill="#2E2E2B"/>
+    <rect x="86" y="218" width="270" height="6" rx="3" fill="#2E2E2B"/>
+    <rect x="86" y="230" width="240" height="6" rx="3" fill="#2E2E2B"/>
+    <!-- CTAs -->
+    <rect x="86" y="250" width="118" height="28" rx="5" fill="#D97757"/>
+    <text x="145" y="268" font-size="8" fill="#fff" font-weight="700" text-anchor="middle">See the Framework</text>
+    <rect x="214" y="250" width="100" height="28" rx="5" fill="#252523"/>
+    <text x="264" y="268" font-size="8" fill="#C2BEB7" font-weight="600" text-anchor="middle">Get the Skill</text>
+  </a>
 
   <!-- ══════════════════════════════════════════════
        WINDOW 2 — ThinkFull Framework
   ══════════════════════════════════════════════ -->
-  <rect x="608" y="20" width="572" height="287" rx="10" fill="#0C0C0A" stroke="#252523" stroke-width="1"/>
-  <rect x="608" y="20" width="572" height="34" rx="10" fill="#1C1C1A"/>
-  <rect x="608" y="40" width="572" height="14" fill="#1C1C1A"/>
-  <circle cx="630" cy="37" r="5" fill="#FF5F57"/><circle cx="646" cy="37" r="5" fill="#FEBC2E"/><circle cx="662" cy="37" r="5" fill="#28C840"/>
-  <rect x="706" y="29" width="356" height="16" rx="4" fill="#2A2A28"/>
-  <text x="884" y="41" font-size="8" fill="#555552" text-anchor="middle">supernotesonline.github.io/ThinkFull/thinkfull</text>
-  <!-- Nav -->
-  <rect x="608" y="54" width="572" height="38" fill="#111110" clip-path="url(#c2)"/>
-  <text x="624" y="77" font-size="11" fill="#D97757" font-weight="800">Tf</text>
-  <rect x="994" y="67" width="46" height="10" rx="2" fill="#252523"/>
-  <rect x="1048" y="67" width="36" height="10" rx="2" fill="#252523"/>
-  <rect x="1092" y="64" width="72" height="16" rx="4" fill="#D97757"/>
-  <!-- Content -->
-  <rect x="608" y="92" width="572" height="215" fill="#0C0C0A" clip-path="url(#c2)"/>
-  <text x="884" y="122" font-size="7" fill="#D97757" font-weight="600" letter-spacing="2.5" text-anchor="middle">MULTIDISCIPLINARY THINKING STUDIO</text>
-  <text x="884" y="153" font-size="26" fill="#EAE6DE" font-weight="800" letter-spacing="-0.8" text-anchor="middle">The ThinkFull</text>
-  <text x="884" y="182" font-size="26" fill="#EAE6DE" font-weight="800" letter-spacing="-0.8" text-anchor="middle">Framework</text>
-  <text x="884" y="200" font-size="8.5" fill="#8A8680" text-anchor="middle">22 world-class specialists. One framework. Every challenge, every domain.</text>
-  <!-- Chips -->
-  <rect x="670" y="211" width="52" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
-  <text x="696" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">Strategy</text>
-  <rect x="730" y="211" width="32" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
-  <text x="746" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">UX</text>
-  <rect x="770" y="211" width="44" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
-  <text x="792" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">Brand</text>
-  <rect x="822" y="211" width="42" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
-  <text x="843" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">AI / ML</text>
-  <rect x="872" y="211" width="54" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
-  <text x="899" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">Architecture</text>
-  <rect x="934" y="211" width="40" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
-  <text x="954" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">Growth</text>
-  <!-- Stats row -->
-  <rect x="670" y="234" width="454" height="60" rx="6" fill="#131311" stroke="#252523" stroke-width="1"/>
-  <text x="720" y="258" font-size="24" fill="#EAE6DE" font-weight="800" text-anchor="middle">22</text>
-  <text x="720" y="272" font-size="6.5" fill="#555552" text-anchor="middle" letter-spacing="1">SPECIALISTS</text>
-  <rect x="768" y="242" width="1" height="44" fill="#2E2E2B"/>
-  <text x="826" y="258" font-size="24" fill="#EAE6DE" font-weight="800" text-anchor="middle">18</text>
-  <text x="826" y="272" font-size="6.5" fill="#555552" text-anchor="middle" letter-spacing="1">DELIVERABLES</text>
-  <rect x="880" y="242" width="1" height="44" fill="#2E2E2B"/>
-  <text x="934" y="258" font-size="24" fill="#EAE6DE" font-weight="800" text-anchor="middle">11</text>
-  <text x="934" y="272" font-size="6.5" fill="#555552" text-anchor="middle" letter-spacing="1">QUALITY GATES</text>
-  <rect x="988" y="242" width="1" height="44" fill="#2E2E2B"/>
-  <text x="1074" y="261" font-size="26" fill="#D97757" font-weight="800" text-anchor="middle">∞</text>
-  <text x="1074" y="272" font-size="6.5" fill="#555552" text-anchor="middle" letter-spacing="1">CHALLENGES</text>
+  <a href="https://supernotesonline.github.io/ThinkFull/thinkfull.html" target="_blank">
+    <rect x="608" y="20" width="572" height="287" rx="10" fill="#0C0C0A" stroke="#252523" stroke-width="1"/>
+    <rect x="608" y="20" width="572" height="34" rx="10" fill="#1C1C1A"/>
+    <rect x="608" y="40" width="572" height="14" fill="#1C1C1A"/>
+    <circle cx="630" cy="37" r="5" fill="#FF5F57"/><circle cx="646" cy="37" r="5" fill="#FEBC2E"/><circle cx="662" cy="37" r="5" fill="#28C840"/>
+    <rect x="706" y="29" width="356" height="16" rx="4" fill="#2A2A28"/>
+    <text x="884" y="41" font-size="8" fill="#555552" text-anchor="middle">supernotesonline.github.io/ThinkFull/thinkfull</text>
+    <!-- Nav -->
+    <rect x="608" y="54" width="572" height="38" fill="#111110" clip-path="url(#c2)"/>
+    <text x="624" y="77" font-size="11" fill="#D97757" font-weight="800">Tf</text>
+    <rect x="994" y="67" width="46" height="10" rx="2" fill="#252523"/>
+    <rect x="1048" y="67" width="36" height="10" rx="2" fill="#252523"/>
+    <rect x="1092" y="64" width="72" height="16" rx="4" fill="#D97757"/>
+    <!-- Content -->
+    <rect x="608" y="92" width="572" height="215" fill="#0C0C0A" clip-path="url(#c2)"/>
+    <text x="884" y="122" font-size="7" fill="#D97757" font-weight="600" letter-spacing="2.5" text-anchor="middle">MULTIDISCIPLINARY THINKING STUDIO</text>
+    <text x="884" y="153" font-size="26" fill="#EAE6DE" font-weight="800" letter-spacing="-0.8" text-anchor="middle">The ThinkFull</text>
+    <text x="884" y="182" font-size="26" fill="#EAE6DE" font-weight="800" letter-spacing="-0.8" text-anchor="middle">Framework</text>
+    <text x="884" y="200" font-size="8.5" fill="#8A8680" text-anchor="middle">22 world-class specialists. One framework. Every challenge, every domain.</text>
+    <!-- Chips -->
+    <rect x="670" y="211" width="52" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
+    <text x="696" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">Strategy</text>
+    <rect x="730" y="211" width="32" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
+    <text x="746" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">UX</text>
+    <rect x="770" y="211" width="44" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
+    <text x="792" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">Brand</text>
+    <rect x="822" y="211" width="42" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
+    <text x="843" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">AI / ML</text>
+    <rect x="872" y="211" width="54" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
+    <text x="899" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">Architecture</text>
+    <rect x="934" y="211" width="40" height="14" rx="7" fill="#1F1F1D" stroke="#2E2E2B" stroke-width="1"/>
+    <text x="954" y="221" font-size="7" fill="#C2BEB7" text-anchor="middle">Growth</text>
+    <!-- Stats row -->
+    <rect x="670" y="234" width="454" height="60" rx="6" fill="#131311" stroke="#252523" stroke-width="1"/>
+    <text x="720" y="258" font-size="24" fill="#EAE6DE" font-weight="800" text-anchor="middle">22</text>
+    <text x="720" y="272" font-size="6.5" fill="#555552" text-anchor="middle" letter-spacing="1">SPECIALISTS</text>
+    <rect x="768" y="242" width="1" height="44" fill="#2E2E2B"/>
+    <text x="826" y="258" font-size="24" fill="#EAE6DE" font-weight="800" text-anchor="middle">18</text>
+    <text x="826" y="272" font-size="6.5" fill="#555552" text-anchor="middle" letter-spacing="1">DELIVERABLES</text>
+    <rect x="880" y="242" width="1" height="44" fill="#2E2E2B"/>
+    <text x="934" y="258" font-size="24" fill="#EAE6DE" font-weight="800" text-anchor="middle">11</text>
+    <text x="934" y="272" font-size="6.5" fill="#555552" text-anchor="middle" letter-spacing="1">QUALITY GATES</text>
+    <rect x="988" y="242" width="1" height="44" fill="#2E2E2B"/>
+    <text x="1074" y="261" font-size="26" fill="#D97757" font-weight="800" text-anchor="middle">∞</text>
+    <text x="1074" y="272" font-size="6.5" fill="#555552" text-anchor="middle" letter-spacing="1">CHALLENGES</text>
+  </a>
 
   <!-- ══════════════════════════════════════════════
        WINDOW 3 — Agent Roles
   ══════════════════════════════════════════════ -->
-  <rect x="20" y="323" width="572" height="287" rx="10" fill="#0C0C0A" stroke="#252523" stroke-width="1"/>
-  <rect x="20" y="323" width="572" height="34" rx="10" fill="#1C1C1A"/>
-  <rect x="20" y="343" width="572" height="14" fill="#1C1C1A"/>
-  <circle cx="42" cy="340" r="5" fill="#FF5F57"/><circle cx="58" cy="340" r="5" fill="#FEBC2E"/><circle cx="74" cy="340" r="5" fill="#28C840"/>
-  <rect x="118" y="332" width="356" height="16" rx="4" fill="#2A2A28"/>
-  <text x="296" y="344" font-size="8" fill="#555552" text-anchor="middle">supernotesonline.github.io/ThinkFull/agent-roles</text>
-  <!-- Nav -->
-  <rect x="20" y="357" width="572" height="38" fill="#111110" clip-path="url(#c3)"/>
-  <text x="36" y="380" font-size="11" fill="#D97757" font-weight="800">Tf</text>
-  <rect x="406" y="370" width="46" height="10" rx="2" fill="#252523"/>
-  <rect x="460" y="370" width="36" height="10" rx="2" fill="#252523"/>
-  <rect x="504" y="367" width="72" height="16" rx="4" fill="#D97757"/>
-  <!-- Sidebar -->
-  <rect x="20" y="395" width="128" height="215" fill="#0F0F0D" clip-path="url(#c3)"/>
-  <rect x="148" y="395" width="1" height="215" fill="#1E1E1C"/>
-  <text x="30" y="416" font-size="6.5" fill="#D97757" font-weight="700" letter-spacing="1.5">VISION &amp; STRATEGY</text>
-  <rect x="30" y="422" width="88" height="6" rx="3" fill="#252523"/>
-  <rect x="30" y="433" width="76" height="6" rx="3" fill="#252523"/>
-  <rect x="30" y="444" width="94" height="6" rx="3" fill="#252523"/>
-  <rect x="30" y="455" width="70" height="6" rx="3" fill="#252523"/>
-  <text x="30" y="473" font-size="6.5" fill="#D97757" font-weight="700" letter-spacing="1.5">RESEARCH</text>
-  <rect x="30" y="479" width="82" height="6" rx="3" fill="#252523"/>
-  <rect x="30" y="490" width="94" height="6" rx="3" fill="#252523"/>
-  <text x="30" y="508" font-size="6.5" fill="#D97757" font-weight="700" letter-spacing="1.5">DESIGN</text>
-  <rect x="30" y="514" width="68" height="6" rx="3" fill="#252523"/>
-  <rect x="30" y="525" width="80" height="6" rx="3" fill="#252523"/>
-  <rect x="30" y="536" width="74" height="6" rx="3" fill="#252523"/>
-  <text x="30" y="554" font-size="6.5" fill="#D97757" font-weight="700" letter-spacing="1.5">TECHNOLOGY</text>
-  <rect x="30" y="560" width="90" height="6" rx="3" fill="#252523"/>
-  <rect x="30" y="571" width="78" height="6" rx="3" fill="#252523"/>
-  <!-- Main content -->
-  <text x="165" y="421" font-size="7" fill="#D97757" font-weight="600" letter-spacing="2">THINKFULL — ROLE BREAKDOWN</text>
-  <text x="165" y="448" font-size="20" fill="#EAE6DE" font-weight="800" letter-spacing="-0.5">What every</text>
-  <text x="165" y="472" font-size="20" fill="#D97757" font-weight="800" font-style="italic" letter-spacing="-0.5">specialist</text>
-  <text x="165" y="496" font-size="20" fill="#EAE6DE" font-weight="800" letter-spacing="-0.5">actually does</text>
-  <!-- Stats -->
-  <rect x="165" y="508" width="338" height="38" rx="5" fill="#131311" stroke="#252523" stroke-width="1"/>
-  <text x="213" y="524" font-size="17" fill="#EAE6DE" font-weight="800" text-anchor="middle">22</text>
-  <text x="213" y="538" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">SPECIALIST ROLES</text>
-  <rect x="264" y="514" width="1" height="24" fill="#2E2E2B"/>
-  <text x="306" y="524" font-size="17" fill="#EAE6DE" font-weight="800" text-anchor="middle">7</text>
-  <text x="306" y="538" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">CATEGORIES</text>
-  <rect x="354" y="514" width="1" height="24" fill="#2E2E2B"/>
-  <text x="396" y="524" font-size="17" fill="#EAE6DE" font-weight="800" text-anchor="middle">18</text>
-  <text x="396" y="538" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">DELIVERABLES</text>
-  <!-- Description -->
-  <rect x="165" y="558" width="320" height="6" rx="3" fill="#252523"/>
-  <rect x="165" y="570" width="280" height="6" rx="3" fill="#252523"/>
-  <rect x="165" y="582" width="240" height="6" rx="3" fill="#252523"/>
+  <a href="https://supernotesonline.github.io/ThinkFull/agent-roles.html" target="_blank">
+    <rect x="20" y="323" width="572" height="287" rx="10" fill="#0C0C0A" stroke="#252523" stroke-width="1"/>
+    <rect x="20" y="323" width="572" height="34" rx="10" fill="#1C1C1A"/>
+    <rect x="20" y="343" width="572" height="14" fill="#1C1C1A"/>
+    <circle cx="42" cy="340" r="5" fill="#FF5F57"/><circle cx="58" cy="340" r="5" fill="#FEBC2E"/><circle cx="74" cy="340" r="5" fill="#28C840"/>
+    <rect x="118" y="332" width="356" height="16" rx="4" fill="#2A2A28"/>
+    <text x="296" y="344" font-size="8" fill="#555552" text-anchor="middle">supernotesonline.github.io/ThinkFull/agent-roles</text>
+    <!-- Nav -->
+    <rect x="20" y="357" width="572" height="38" fill="#111110" clip-path="url(#c3)"/>
+    <text x="36" y="380" font-size="11" fill="#D97757" font-weight="800">Tf</text>
+    <rect x="406" y="370" width="46" height="10" rx="2" fill="#252523"/>
+    <rect x="460" y="370" width="36" height="10" rx="2" fill="#252523"/>
+    <rect x="504" y="367" width="72" height="16" rx="4" fill="#D97757"/>
+    <!-- Sidebar -->
+    <rect x="20" y="395" width="128" height="215" fill="#0F0F0D" clip-path="url(#c3)"/>
+    <rect x="148" y="395" width="1" height="215" fill="#1E1E1C"/>
+    <text x="30" y="416" font-size="6.5" fill="#D97757" font-weight="700" letter-spacing="1.5">VISION &amp; STRATEGY</text>
+    <rect x="30" y="422" width="88" height="6" rx="3" fill="#252523"/>
+    <rect x="30" y="433" width="76" height="6" rx="3" fill="#252523"/>
+    <rect x="30" y="444" width="94" height="6" rx="3" fill="#252523"/>
+    <rect x="30" y="455" width="70" height="6" rx="3" fill="#252523"/>
+    <text x="30" y="473" font-size="6.5" fill="#D97757" font-weight="700" letter-spacing="1.5">RESEARCH</text>
+    <rect x="30" y="479" width="82" height="6" rx="3" fill="#252523"/>
+    <rect x="30" y="490" width="94" height="6" rx="3" fill="#252523"/>
+    <text x="30" y="508" font-size="6.5" fill="#D97757" font-weight="700" letter-spacing="1.5">DESIGN</text>
+    <rect x="30" y="514" width="68" height="6" rx="3" fill="#252523"/>
+    <rect x="30" y="525" width="80" height="6" rx="3" fill="#252523"/>
+    <rect x="30" y="536" width="74" height="6" rx="3" fill="#252523"/>
+    <text x="30" y="554" font-size="6.5" fill="#D97757" font-weight="700" letter-spacing="1.5">TECHNOLOGY</text>
+    <rect x="30" y="560" width="90" height="6" rx="3" fill="#252523"/>
+    <rect x="30" y="571" width="78" height="6" rx="3" fill="#252523"/>
+    <!-- Main content -->
+    <text x="165" y="421" font-size="7" fill="#D97757" font-weight="600" letter-spacing="2">THINKFULL — ROLE BREAKDOWN</text>
+    <text x="165" y="448" font-size="20" fill="#EAE6DE" font-weight="800" letter-spacing="-0.5">What every</text>
+    <text x="165" y="472" font-size="20" fill="#D97757" font-weight="800" font-style="italic" letter-spacing="-0.5">specialist</text>
+    <text x="165" y="496" font-size="20" fill="#EAE6DE" font-weight="800" letter-spacing="-0.5">actually does</text>
+    <!-- Stats -->
+    <rect x="165" y="508" width="338" height="38" rx="5" fill="#131311" stroke="#252523" stroke-width="1"/>
+    <text x="213" y="524" font-size="17" fill="#EAE6DE" font-weight="800" text-anchor="middle">22</text>
+    <text x="213" y="538" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">SPECIALIST ROLES</text>
+    <rect x="264" y="514" width="1" height="24" fill="#2E2E2B"/>
+    <text x="306" y="524" font-size="17" fill="#EAE6DE" font-weight="800" text-anchor="middle">7</text>
+    <text x="306" y="538" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">CATEGORIES</text>
+    <rect x="354" y="514" width="1" height="24" fill="#2E2E2B"/>
+    <text x="396" y="524" font-size="17" fill="#EAE6DE" font-weight="800" text-anchor="middle">18</text>
+    <text x="396" y="538" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">DELIVERABLES</text>
+    <!-- Description -->
+    <rect x="165" y="558" width="320" height="6" rx="3" fill="#252523"/>
+    <rect x="165" y="570" width="280" height="6" rx="3" fill="#252523"/>
+    <rect x="165" y="582" width="240" height="6" rx="3" fill="#252523"/>
+  </a>
 
   <!-- ══════════════════════════════════════════════
        WINDOW 4 — Prompt Studio
   ══════════════════════════════════════════════ -->
-  <rect x="608" y="323" width="572" height="287" rx="10" fill="#0C0C0A" stroke="#252523" stroke-width="1"/>
-  <rect x="608" y="323" width="572" height="34" rx="10" fill="#1C1C1A"/>
-  <rect x="608" y="343" width="572" height="14" fill="#1C1C1A"/>
-  <circle cx="630" cy="340" r="5" fill="#FF5F57"/><circle cx="646" cy="340" r="5" fill="#FEBC2E"/><circle cx="662" cy="340" r="5" fill="#28C840"/>
-  <rect x="706" y="332" width="356" height="16" rx="4" fill="#2A2A28"/>
-  <text x="884" y="344" font-size="8" fill="#555552" text-anchor="middle">supernotesonline.github.io/ThinkFull/studio-launchpad</text>
-  <!-- Nav -->
-  <rect x="608" y="357" width="572" height="38" fill="#111110" clip-path="url(#c4)"/>
-  <text x="624" y="380" font-size="11" fill="#D97757" font-weight="800">Tf</text>
-  <rect x="994" y="370" width="46" height="10" rx="2" fill="#252523"/>
-  <rect x="1048" y="370" width="36" height="10" rx="2" fill="#252523"/>
-  <rect x="1092" y="367" width="72" height="16" rx="4" fill="#D97757"/>
-  <!-- Content -->
-  <rect x="608" y="395" width="572" height="215" fill="#0C0C0A" clip-path="url(#c4)"/>
-  <text x="884" y="418" font-size="7.5" fill="#D97757" font-weight="600" letter-spacing="2.5" text-anchor="middle">THINKFULL</text>
-  <text x="884" y="447" font-size="26" fill="#EAE6DE" font-weight="800" letter-spacing="-0.8" text-anchor="middle">Prompt Studio</text>
-  <text x="884" y="467" font-size="8.5" fill="#8A8680" text-anchor="middle">Pick an industry mode, describe the challenge, get a ready-to-paste brief in seconds</text>
-  <!-- Mini stats -->
-  <rect x="680" y="477" width="408" height="30" rx="5" fill="#131311" stroke="#252523" stroke-width="1"/>
-  <text x="724" y="494" font-size="14" fill="#EAE6DE" font-weight="800" text-anchor="middle">4</text>
-  <text x="724" y="502" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">INDUSTRY MODES</text>
-  <rect x="770" y="482" width="1" height="20" fill="#2E2E2B"/>
-  <text x="820" y="494" font-size="14" fill="#EAE6DE" font-weight="800" text-anchor="middle">22</text>
-  <text x="820" y="502" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">SPECIALISTS</text>
-  <rect x="870" y="482" width="1" height="20" fill="#2E2E2B"/>
-  <text x="918" y="494" font-size="14" fill="#EAE6DE" font-weight="800" text-anchor="middle">18</text>
-  <text x="918" y="502" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">DELIVERABLES</text>
-  <rect x="968" y="482" width="1" height="20" fill="#2E2E2B"/>
-  <text x="1044" y="494" font-size="14" fill="#D97757" font-weight="800" text-anchor="middle">∞</text>
-  <text x="1044" y="502" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">CHALLENGES</text>
-  <!-- Label -->
-  <text x="684" y="523" font-size="6.5" fill="#555552" letter-spacing="1.5">STEP 01 — SELECT INDUSTRY MODE</text>
-  <!-- Mode cards -->
-  <rect x="684" y="531" width="90" height="50" rx="6" fill="#161614" stroke="#D97757" stroke-width="1.5"/>
-  <text x="729" y="549" font-size="8" fill="#EAE6DE" font-weight="700" text-anchor="middle">SaaS / B2B</text>
-  <rect x="684" y="541" width="90" height="7" rx="0" fill="none"/>
-  <rect x="684" y="551" width="90" height="5" rx="3" fill="#252523"/>
-  <rect x="684" y="559" width="70" height="5" rx="3" fill="#252523"/>
-  <rect x="782" y="531" width="90" height="50" rx="6" fill="#131311" stroke="#252523" stroke-width="1"/>
-  <text x="827" y="549" font-size="8" fill="#8A8680" font-weight="600" text-anchor="middle">E-commerce</text>
-  <rect x="827" y="551" width="90" height="5" rx="3" fill="#1E1E1C"/>
-  <rect x="880" y="531" width="90" height="50" rx="6" fill="#131311" stroke="#252523" stroke-width="1"/>
-  <text x="925" y="549" font-size="8" fill="#8A8680" font-weight="600" text-anchor="middle">Mobile App</text>
-  <rect x="978" y="531" width="90" height="50" rx="6" fill="#131311" stroke="#252523" stroke-width="1"/>
-  <text x="1023" y="549" font-size="8" fill="#8A8680" font-weight="600" text-anchor="middle">AI Product</text>
+  <a href="https://supernotesonline.github.io/ThinkFull/studio-launchpad.html" target="_blank">
+    <rect x="608" y="323" width="572" height="287" rx="10" fill="#0C0C0A" stroke="#252523" stroke-width="1"/>
+    <rect x="608" y="323" width="572" height="34" rx="10" fill="#1C1C1A"/>
+    <rect x="608" y="343" width="572" height="14" fill="#1C1C1A"/>
+    <circle cx="630" cy="340" r="5" fill="#FF5F57"/><circle cx="646" cy="340" r="5" fill="#FEBC2E"/><circle cx="662" cy="340" r="5" fill="#28C840"/>
+    <rect x="706" y="332" width="356" height="16" rx="4" fill="#2A2A28"/>
+    <text x="884" y="344" font-size="8" fill="#555552" text-anchor="middle">supernotesonline.github.io/ThinkFull/studio-launchpad</text>
+    <!-- Nav -->
+    <rect x="608" y="357" width="572" height="38" fill="#111110" clip-path="url(#c4)"/>
+    <text x="624" y="380" font-size="11" fill="#D97757" font-weight="800">Tf</text>
+    <rect x="994" y="370" width="46" height="10" rx="2" fill="#252523"/>
+    <rect x="1048" y="370" width="36" height="10" rx="2" fill="#252523"/>
+    <rect x="1092" y="367" width="72" height="16" rx="4" fill="#D97757"/>
+    <!-- Content -->
+    <rect x="608" y="395" width="572" height="215" fill="#0C0C0A" clip-path="url(#c4)"/>
+    <text x="884" y="418" font-size="7.5" fill="#D97757" font-weight="600" letter-spacing="2.5" text-anchor="middle">THINKFULL</text>
+    <text x="884" y="447" font-size="26" fill="#EAE6DE" font-weight="800" letter-spacing="-0.8" text-anchor="middle">Prompt Studio</text>
+    <text x="884" y="467" font-size="8.5" fill="#8A8680" text-anchor="middle">Pick an industry mode, describe the challenge, get a ready-to-paste brief in seconds</text>
+    <!-- Mini stats -->
+    <rect x="680" y="477" width="408" height="30" rx="5" fill="#131311" stroke="#252523" stroke-width="1"/>
+    <text x="724" y="494" font-size="14" fill="#EAE6DE" font-weight="800" text-anchor="middle">4</text>
+    <text x="724" y="502" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">INDUSTRY MODES</text>
+    <rect x="770" y="482" width="1" height="20" fill="#2E2E2B"/>
+    <text x="820" y="494" font-size="14" fill="#EAE6DE" font-weight="800" text-anchor="middle">22</text>
+    <text x="820" y="502" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">SPECIALISTS</text>
+    <rect x="870" y="482" width="1" height="20" fill="#2E2E2B"/>
+    <text x="918" y="494" font-size="14" fill="#EAE6DE" font-weight="800" text-anchor="middle">18</text>
+    <text x="918" y="502" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">DELIVERABLES</text>
+    <rect x="968" y="482" width="1" height="20" fill="#2E2E2B"/>
+    <text x="1044" y="494" font-size="14" fill="#D97757" font-weight="800" text-anchor="middle">∞</text>
+    <text x="1044" y="502" font-size="6" fill="#555552" text-anchor="middle" letter-spacing="1">CHALLENGES</text>
+    <!-- Label -->
+    <text x="684" y="523" font-size="6.5" fill="#555552" letter-spacing="1.5">STEP 01 — SELECT INDUSTRY MODE</text>
+    <!-- Mode cards -->
+    <rect x="684" y="531" width="90" height="50" rx="6" fill="#161614" stroke="#D97757" stroke-width="1.5"/>
+    <text x="729" y="549" font-size="8" fill="#EAE6DE" font-weight="700" text-anchor="middle">SaaS / B2B</text>
+    <rect x="684" y="541" width="90" height="7" rx="0" fill="none"/>
+    <rect x="684" y="551" width="90" height="5" rx="3" fill="#252523"/>
+    <rect x="684" y="559" width="70" height="5" rx="3" fill="#252523"/>
+    <rect x="782" y="531" width="90" height="50" rx="6" fill="#131311" stroke="#252523" stroke-width="1"/>
+    <text x="827" y="549" font-size="8" fill="#8A8680" font-weight="600" text-anchor="middle">E-commerce</text>
+    <rect x="827" y="551" width="90" height="5" rx="3" fill="#1E1E1C"/>
+    <rect x="880" y="531" width="90" height="50" rx="6" fill="#131311" stroke="#252523" stroke-width="1"/>
+    <text x="925" y="549" font-size="8" fill="#8A8680" font-weight="600" text-anchor="middle">Mobile App</text>
+    <rect x="978" y="531" width="90" height="50" rx="6" fill="#131311" stroke="#252523" stroke-width="1"/>
+    <text x="1023" y="549" font-size="8" fill="#8A8680" font-weight="600" text-anchor="middle">AI Product</text>
+  </a>
 </svg>
