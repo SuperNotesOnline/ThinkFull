@@ -214,12 +214,15 @@ html:not([data-theme="light"]) .icon-sun{display:none}
   .nav-sub,.nav-count{display:none}
   .hamburger{display:flex}
 }
+.mobile-jump{display:none;position:fixed;top:52px;left:0;right:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--border);padding:8px 16px}
+.mobile-jump select{width:100%;background:var(--s2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:8px 12px;font:500 13px/1 var(--sans);cursor:pointer}
 @media(max-width:768px){
   .sidebar{display:none}
-  .main{margin-left:0}
+  .main{margin-left:0;padding-top:46px}
   .hero,.role-card,.cat-header{padding-left:20px;padding-right:20px}
   .hero{padding-top:32px}
-  .cat-header{top:52px}
+  .cat-header{top:98px}
+  .mobile-jump{display:block}
 }
 </style>
 </head>
@@ -299,6 +302,48 @@ html:not([data-theme="light"]) .icon-sun{display:none}
     <a href="#qa-lead" class="sidebar-link"><span class="num">22</span>QA Lead</a>
   </div>
 </aside>
+
+<div class="mobile-jump">
+  <select id="roleSelect" aria-label="Jump to role">
+    <option value="">Jump to role...</option>
+    <optgroup label="Vision &amp; Strategy">
+      <option value="founder">01 · Founder</option>
+      <option value="product-strategist">02 · Product Strategist</option>
+      <option value="business-consultant">03 · Business Consultant</option>
+      <option value="product-manager">04 · Product Manager</option>
+    </optgroup>
+    <optgroup label="Research &amp; Discovery">
+      <option value="research-analyst">05 · Research Analyst</option>
+      <option value="ux-researcher">06 · UX Researcher</option>
+    </optgroup>
+    <optgroup label="Design">
+      <option value="ux-designer">07 · UX Designer</option>
+      <option value="ui-designer">08 · UI Designer</option>
+      <option value="experience-engineer">09 · Experience Engineer</option>
+      <option value="creative-director">10 · Creative Director</option>
+      <option value="brand-strategist">11 · Brand Strategist</option>
+    </optgroup>
+    <optgroup label="Craft">
+      <option value="copy-strategist">12 · Copy Strategist</option>
+      <option value="motion-designer">13 · Motion Designer</option>
+      <option value="frontend-engineer">14 · Front-End Engineer</option>
+    </optgroup>
+    <optgroup label="Technology">
+      <option value="architect">15 · Software Architect</option>
+      <option value="data-analytics">16 · Data &amp; Analytics</option>
+      <option value="ai-systems">17 · AI Systems Designer</option>
+    </optgroup>
+    <optgroup label="Growth">
+      <option value="growth-consultant">18 · Growth Consultant</option>
+      <option value="conversion-architect">19 · Conversion Architect</option>
+      <option value="community-designer">20 · Community Designer</option>
+    </optgroup>
+    <optgroup label="Innovation &amp; QA">
+      <option value="innovation-director">21 · Innovation Director</option>
+      <option value="qa-lead">22 · QA Lead</option>
+    </optgroup>
+  </select>
+</div>
 
 <!-- MAIN CONTENT -->
 <main class="main">
@@ -1553,6 +1598,16 @@ document.querySelectorAll('.hstat-val').forEach((el, i) => {
       else el.style.animation = 'stat-pulse 380ms cubic-bezier(.22,1,.36,1) both';
     })(performance.now());
   }, 750 + i * 120);
+});
+
+// Role jump select
+document.getElementById('roleSelect').addEventListener('change', function() {
+  if (!this.value) return;
+  const el = document.getElementById(this.value);
+  if (!el) return;
+  const offset = 52 + 46; // nav + jump bar
+  window.scrollTo({top: el.getBoundingClientRect().top + window.scrollY - offset, behavior:'smooth'});
+  this.value = '';
 });
 
 // Mobile menu
