@@ -76,7 +76,7 @@ section{padding:40px 0;border-bottom:1px solid var(--border)}
 section:last-child{border-bottom:none}
 
 /* ── HERO ─────────────────────────────────────── */
-.hero{padding:96px 0 80px;text-align:center;position:relative;overflow:hidden}
+.hero{padding:96px 0 48px;text-align:center;position:relative;overflow:hidden}
 .hero-bg{position:absolute;inset:0;pointer-events:none;z-index:0}
 .hero-inner{position:relative;z-index:2}
 .hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(217,119,87,0.28) 1px,transparent 1px);background-size:36px 36px;-webkit-mask-image:radial-gradient(ellipse 75% 95% at 50% 38%,black 15%,transparent 78%);mask-image:radial-gradient(ellipse 75% 95% at 50% 38%,black 15%,transparent 78%);opacity:0.38}
@@ -93,8 +93,9 @@ h1{font:800 clamp(42px,6vw,80px)/1.0 var(--sans);letter-spacing:-0.04em;color:va
 h1 em{font-style:italic;color:var(--accent)}
 .lead{font-size:18px;line-height:1.6;color:var(--muted);margin:0 auto 40px}
 .hero-badges{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
-.hbadge{font:500 12px/1 var(--mono);padding:6px 14px;border-radius:100px;background:var(--s2);border:1px solid var(--border);color:var(--text);text-decoration:none;transition:background 150ms,border-color 150ms,color 150ms,transform 150ms}
+.hbadge{font:500 14px/1 var(--mono);padding:8px 16px;border-radius:10px;background:var(--s2);border:1px solid var(--border);color:var(--text);text-decoration:none;transition:background 150ms,border-color 150ms,color 150ms,transform 150ms;display:inline-flex;flex-direction:column;align-items:center;gap:5px}
 .hbadge:hover{background:var(--s3);border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.badge-num{font:600 10px/1 var(--mono);color:var(--accent);opacity:0.7}
 
 /* ── STATS ────────────────────────────────────── */
 .stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin:0}
@@ -286,18 +287,19 @@ h2{font:700 clamp(28px,3.5vw,40px)/1.1 var(--sans);letter-spacing:-0.025em;color
   <div class="wrap hero-inner">
     <div class="eyebrow">Multidisciplinary Thinking</div>
     <h1>The <em>ThinkFull</em><br>Framework</h1>
-    <p class="lead">22 world-class specialists. One framework. Every challenge, every domain.</p>
+    <p class="lead">22 specialists. 10 disciplines. Every challenge, every domain.</p>
     <div class="hero-badges">
-      <a class="hbadge" href="agent-roles.html#vision">Strategy</a>
-      <a class="hbadge" href="agent-roles.html#ux-designer">UX / UI</a>
-      <a class="hbadge" href="agent-roles.html#motion-designer">Motion Design</a>
-      <a class="hbadge" href="agent-roles.html#brand-strategist">Brand</a>
-      <a class="hbadge" href="agent-roles.html#ai-systems">AI Systems</a>
-      <a class="hbadge" href="agent-roles.html#architect">Architecture</a>
-      <a class="hbadge" href="agent-roles.html#growth-consultant">Growth</a>
-      <a class="hbadge" href="agent-roles.html#conversion-architect">Conversion</a>
-      <a class="hbadge" href="agent-roles.html#innovation-director">Innovation</a>
-      <a class="hbadge" href="agent-roles.html#community-designer">Community</a>
+      <a class="hbadge" href="agent-roles.html#vision"><span class="badge-num">01</span> Strategy</a>
+      <a class="hbadge" href="agent-roles.html#ux-designer"><span class="badge-num">02</span> UX / UI</a>
+      <a class="hbadge" href="agent-roles.html#motion-designer"><span class="badge-num">03</span> Motion Design</a>
+      <a class="hbadge" href="agent-roles.html#brand-strategist"><span class="badge-num">04</span> Brand</a>
+      <a class="hbadge" href="agent-roles.html#ai-systems"><span class="badge-num">05</span> AI Systems</a>
+      <a class="hbadge" href="agent-roles.html#architect"><span class="badge-num">06</span> Architecture</a>
+      <a class="hbadge" href="agent-roles.html#growth-consultant"><span class="badge-num">07</span> Growth</a>
+      <div style="width:100%;height:0"></div>
+      <a class="hbadge" href="agent-roles.html#conversion-architect"><span class="badge-num">08</span> Conversion</a>
+      <a class="hbadge" href="agent-roles.html#innovation-director"><span class="badge-num">09</span> Innovation</a>
+      <a class="hbadge" href="agent-roles.html#community-designer"><span class="badge-num">10</span> Community</a>
     </div>
   </div>
 </section>
