@@ -34,10 +34,10 @@ No agents. No pipelines. No orchestration overhead. Just a skill file you drop i
 
 ### Install
 
-**1. Clone the skill into your Claude skills folder:**
+**1. Install the skill:**
 
 ```bash
-git clone https://github.com/SuperNotesOnline/ThinkFull.git ~/.claude/skills/thinkfull
+mkdir -p ~/.claude/skills/thinkfull && curl -fsSL https://raw.githubusercontent.com/SuperNotesOnline/ThinkFull/main/skill/SKILL.md -o ~/.claude/skills/thinkfull/SKILL.md
 ```
 
 **2. Restart Claude Code.**
