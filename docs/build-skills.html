@@ -178,7 +178,11 @@ h2{font:700 clamp(28px,3.5vw,44px)/1.1 var(--sans);letter-spacing:-0.03em;color:
 .step-num::after{content:'';flex:1;height:1px;background:var(--border)}
 .step h3{font:700 16px/1.2 var(--sans);letter-spacing:-0.01em;color:var(--text)}
 .step p{font-size:14px;line-height:1.65;color:var(--muted)}
-.step-code{font:600 13px/1 var(--mono);color:var(--accent);background:rgba(217,119,87,0.1);border:1px solid rgba(217,119,87,0.2);padding:8px 14px;border-radius:6px;display:inline-block;margin-top:4px}
+.step-code{font:600 13px/1 var(--mono);color:var(--accent);background:rgba(217,119,87,0.1);border:1px solid rgba(217,119,87,0.2);padding:8px 14px;border-radius:6px;display:inline-flex;align-items:center;gap:10px;margin-top:4px;cursor:pointer;transition:background 150ms,border-color 150ms;width:100%;justify-content:space-between}
+.step-code:hover{background:rgba(217,119,87,0.16);border-color:rgba(217,119,87,0.35)}
+.step-code-icon{flex-shrink:0;opacity:0.6;transition:opacity 150ms}
+.step-code:hover .step-code-icon{opacity:1}
+.step-code.copied{color:var(--success);background:rgba(143,175,106,0.1);border-color:rgba(143,175,106,0.3)}
 @media(max-width:760px){.steps{grid-template-columns:1fr}}
 
 /* MANIFESTO BLOCK */
@@ -519,19 +523,19 @@ Is it exceptional?</code></pre>
       <div class="step-num">Step 01</div>
       <h3>Install Claude Code</h3>
       <p>Claude Code is Anthropic's official CLI. Install it once and it works across every project you do.</p>
-      <span class="step-code">npm i -g @anthropic-ai/claude-code</span>
+      <button class="step-code" onclick="copyCode(this,'npm i -g @anthropic-ai/claude-code')"><span>npm i -g @anthropic-ai/claude-code</span><svg class="step-code-icon" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5" stroke="currentColor" stroke-width="1.5"/></svg></button>
     </div>
     <div class="step">
       <div class="step-num">Step 02</div>
-      <h3>Clone the Skill</h3>
-      <p>Copy the SKILL.md file into your Claude Code skills folder. That is the entire installation process.</p>
-      <span class="step-code">~/.claude/skills/thinkfull/</span>
+      <h3>Get the Skill</h3>
+      <p>Download SKILL.md from the repo and drop it into your Claude Code skills folder.</p>
+      <a class="step-code" href="https://github.com/SuperNotesOnline/ThinkFull" target="_blank" rel="noopener"><span>github.com/SuperNotesOnline/ThinkFull</span><svg class="step-code-icon" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 3H3.5A1.5 1.5 0 0 0 2 4.5v8A1.5 1.5 0 0 0 3.5 14h8A1.5 1.5 0 0 0 13 12.5V10M9 2h5m0 0v5m0-5L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="step">
       <div class="step-num">Step 03</div>
       <h3>Activate</h3>
       <p>Open any project in Claude Code. Type the slash command. Your full thinking studio is live.</p>
-      <span class="step-code">/thinkfull</span>
+      <button class="step-code" onclick="copyCode(this,'/thinkfull')"><span>/thinkfull</span><svg class="step-code-icon" width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5" stroke="currentColor" stroke-width="1.5"/></svg></button>
     </div>
   </div>
 </div>
@@ -559,6 +563,19 @@ Is it exceptional?</code></pre>
 </button>
 
 <script>
+// Copy code buttons
+function copyCode(btn, text) {
+  navigator.clipboard.writeText(text).then(() => {
+    btn.classList.add('copied');
+    const icon = btn.querySelector('.step-code-icon');
+    icon.innerHTML = '<polyline points="2,8 6,12 14,4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      icon.innerHTML = '<rect x="5" y="5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5" stroke="currentColor" stroke-width="1.5"/>';
+    }, 1800);
+  });
+}
+
 // Mobile menu
 const menuBtn = document.getElementById('menuBtn');
 const mobileMenu = document.getElementById('mobileMenu');
