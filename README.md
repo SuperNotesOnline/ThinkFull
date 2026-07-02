@@ -26,7 +26,7 @@
 
 ### What It Is
 
-ThinkFull is a Claude Code skill that activates a full team of specialists the moment you describe a challenge. Project strategy, UX, copywriting, engineering, growth, brand, AI systems: all 22 disciplines fire simultaneously, not one at a time.
+ThinkFull is a Claude Code skill that activates a full team of specialists the moment you describe a challenge. Every time you type /thinkfull, the right specialists activate for your challenge. Strategy, design, engineering, growth, brand. Whichever disciplines your project needs, inside a single markdown file.
 
 No agents. No pipelines. No orchestration overhead. Just a skill file you drop into your Claude setup.
 
