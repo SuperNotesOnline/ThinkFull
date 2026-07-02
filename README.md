@@ -26,7 +26,7 @@
 
 ### What It Is
 
-ThinkFull is a Claude Code skill that activates a full team of specialists the moment you describe a challenge. Product strategy, UX, copywriting, engineering, growth, brand, AI systems — all 22 disciplines fire simultaneously, not one at a time.
+ThinkFull is a Claude Code skill that activates a full team of specialists the moment you describe a challenge. Project strategy, UX, copywriting, engineering, growth, brand, AI systems: all 22 disciplines fire simultaneously, not one at a time.
 
 No agents. No pipelines. No orchestration overhead. Just a skill file you drop into your Claude setup.
 
@@ -68,10 +68,10 @@ That's it. Throw any digital project challenge at Claude and all 22 specialists 
 
 ### Learn More
 
-- [The Case for Skills](https://supernotesonline.github.io/ThinkFull/build-skills.html) — why skills beat agents for most challenges
-- [The Framework](https://supernotesonline.github.io/ThinkFull/thinkfull.html) — how ThinkFull works
-- [22 Specialist Roles](https://supernotesonline.github.io/ThinkFull/agent-roles.html) — the full team
-- [Prompt Studio](https://supernotesonline.github.io/ThinkFull/studio-launchpad.html) — build a custom prompt
+- [The Case for Skills](https://supernotesonline.github.io/ThinkFull/build-skills.html): why skills beat agents for most challenges
+- [The Framework](https://supernotesonline.github.io/ThinkFull/thinkfull.html): how ThinkFull works
+- [22 Specialist Roles](https://supernotesonline.github.io/ThinkFull/agent-roles.html): the full team
+- [Prompt Studio](https://supernotesonline.github.io/ThinkFull/studio-launchpad.html): build a custom prompt
 
 ---
 
