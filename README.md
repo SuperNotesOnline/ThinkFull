@@ -1,7 +1,7 @@
-<p align="center"><img src="docs/images/LogoFinal2.png" width="300"/></p>
+<p align="center"><img src="docs/images/LogoFinal3.png" width="300"/></p>
 
-**A multidisciplinary thinking studio for Claude Code.**  
-22 world-class specialists. One skill file. Every challenge, every domain.
+<p align="center"><strong>A multidisciplinary thinking studio for Claude Code.</strong><br>
+22 world-class specialists. One skill file. Every challenge, every domain.</p>
 
 ---
 
