@@ -1,4 +1,4 @@
-# ThinkFull
+<p align="center"><img src="docs/images/LogoFinal.png" width="300"/></p>
 
 **A multidisciplinary thinking studio for Claude Code.**  
 22 world-class specialists. One skill file. Every challenge, every domain.
