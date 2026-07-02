@@ -7,12 +7,12 @@
 
 <table>
 <tr>
-<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/build-skills.html"><img src="docs/images/preview-build-skills.svg" width="100%"/></a></td>
-<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/thinkfull.html"><img src="docs/images/preview-framework.svg" width="100%"/></a></td>
+<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/build-skills.html"><img src="docs/images/hero-build-skills.png" width="100%"/></a></td>
+<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/thinkfull.html"><img src="docs/images/hero-thinkfull.png" width="100%"/></a></td>
 </tr>
 <tr>
-<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/agent-roles.html"><img src="docs/images/preview-agent-roles.svg" width="100%"/></a></td>
-<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/studio-launchpad.html"><img src="docs/images/preview-studio.svg" width="100%"/></a></td>
+<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/agent-roles.html"><img src="docs/images/TheSpecialist.jpg" width="100%"/></a></td>
+<td width="50%"><a href="https://supernotesonline.github.io/ThinkFull/studio-launchpad.html"><img src="docs/images/PromptStudio.jpg" width="100%"/></a></td>
 </tr>
 </table>
 
