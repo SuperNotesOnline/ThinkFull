@@ -75,4 +75,3 @@ That's it. Throw any digital project challenge at Claude and all 22 specialists 
 
 ---
 
-*Personal use only. Not for redistribution or modification.*
